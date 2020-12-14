@@ -9,5 +9,7 @@ namespace Statement.Services
     public interface IStatementService
     {
         Task CreateStatement(ApplicationStatement statement);
+
+        void WorkWithDocFile(ApplicationStatement statement);
     }
 }

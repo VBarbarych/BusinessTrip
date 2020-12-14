@@ -22,21 +22,21 @@ namespace BusinessTrip.Models
         [Required]
         public int StatementId { get; set; }     // ключ
 
-        [Required]
+        //[Required]
         [MaxLength(100)]
         public string UserNameGenitiveCase { get; set; }   //genitive case - родовий відмінок
-        [Required]
+        //[Required]
         [MaxLength(100)]
         public string UserSurNameGenitiveCase { get; set; }   //genitive case - родовий відмінок
-        [Required]
+        //[Required]
         [MaxLength(100)]
         public string UserLastNameGenitiveCase { get; set; }   //genitive case - родовий відмінок
 
-        [Required]
+        //[Required]
         [MaxLength(200)]
         public string SubdivisionAtTheMainPlaceOfWork { get; set; } // підрозділ  за основним місцем праці
 
-        [Required]
+        //[Required]
         [MaxLength(100)]
         public string PositionAtTheMainPlaceOfWork { get; set; } // підрозділ  за основним місцем праці
 
@@ -50,35 +50,35 @@ namespace BusinessTrip.Models
 
 
 
-        [Required]
+        //[Required]
         [MaxLength(50)]
         public string TypeOfBusinessTrip { get; set; } // тип відрядження 
 
         [MaxLength(250)]
         public string PurposeOfBusinessTrip { get; set; }     // мета відрядження                                         ------------------------------------- other
 
-        [Required]
+        //[Required]
         [MaxLength(200)]
         public string TypeOfSalaryRetention { get; set; } // вид збереження заробітної плати
 
 
-        [Required]
+        //[Required]
         [MaxLength(200)]
         public string StatementPlaceOfDestination { get; set; }  // місто відрядження
 
         [MaxLength(200)]
         public string StatementCountryOfDestination { get; set; }  // країна відрядження  (для закордонного відрядження) - необов'язково
 
-        [Required]
+        //[Required]
         [MaxLength(300)]
         public string InstitutionWhereYouGo { get; set; }       // установа, куди відряджаєтесь
 
-        [Required]
+        //[Required]
         [DataType(DataType.DateTime, ErrorMessage = "Введіть коректну дату у форматі: dd/mm/yyyy hh:mm")]
         [Range(typeof(DateTime), "1/1/2010", "1/1/2100")]
         public DateTime DateOfBusinessTrip { get; set; }   // дата початку відрядження
 
-        [Required]
+        //[Required]
         [DataType(DataType.DateTime, ErrorMessage = "Введіть коректну дату у форматі: dd/mm/yyyy hh:mm")]
         [Range(typeof(DateTime), "1/1/2010", "1/1/2100")]
         public DateTime DateOfСompletionBusinessTrip { get; set; }   // дата завершення відрядження
@@ -89,11 +89,11 @@ namespace BusinessTrip.Models
         [MaxLength(200)]
         public string TransportOfBusinessTrip { get; set; }   //  транспорт, яким будете подорожувати (для відряджень по Україні) - необов'язково  ------------------------------------- other
 
-        [Required]
+        //[Required]
         [MaxLength(200)]
         public string PaymentOfTravelExpenses { get; set; } // оплата видатків на відрядження                          ------------------------------------- other
 
-        [Required]
+        //[Required]
         [MaxLength(200)]
         public string BasisOfBusinessTrip { get; set; } // підстава відрядження                                        ------------------------------------- other
 
