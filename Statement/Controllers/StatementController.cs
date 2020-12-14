@@ -34,7 +34,7 @@ namespace Statement.Controllers
             if (ModelState.IsValid)
             {
                 await _statementService.CreateStatement(statement);
-                //_statementService.WorkWithDocFile(statement);
+                _statementService.WorkWithDocFile(statement);
 
                 return RedirectToAction(nameof(Index));
             }
