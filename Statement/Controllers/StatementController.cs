@@ -25,14 +25,14 @@ namespace Statement.Controllers
         }
 
 
-        //[HttpGet]
-        //public FileResult PDFDownload()
-        //{
+        [HttpGet]
+        public FileResult PDFDownload()
+        {
 
-        //    var statements = _statementService.GetAllStatements().Statements.FirstOrDefault();
-        //    byte[] pdfByte = statements.FileData;
-        //    return File(pdfByte, "i.docx", "qwe");
-        //}
+            var statements = _statementService.GetAllStatements().Statements.FirstOrDefault();
+            byte[] pdfByte = statements.FileData;
+            return File(pdfByte, "i.docx", "qwe");
+        }
 
 
         public IActionResult Create()
