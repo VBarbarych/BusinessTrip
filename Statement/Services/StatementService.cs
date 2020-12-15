@@ -1,6 +1,7 @@
 ﻿using BusinessTrip.Models;
 using Microsoft.EntityFrameworkCore;
 using Statement.Data;
+using Statement.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,6 +28,19 @@ namespace Statement.Services
             await _context.SaveChangesAsync();
         }
 
+        public StatementViewModel GetAllStatements()
+        {
+            var statements = _context.AspStatement.ToList();
+
+            var statementViewModel = new StatementViewModel()
+            {
+                Statements = statements
+            };
+            return statementViewModel;
+        }
+
+
+
         private void ReplaceStub(string stubToReplace, string text, Microsoft.Office.Interop.Word.Document worldDocument)
         {
             var range = worldDocument.Content;
@@ -37,33 +51,53 @@ namespace Statement.Services
 
         public void WorkWithDocFile(ApplicationStatement statement)
         {
-            var wordApp = new Microsoft.Office.Interop.Word.Application();
-            //Application app = new Application();
-            //Document doc = app.Documents.Add(Visible: true);
+            try
+            { 
+                var wordApp = new Microsoft.Office.Interop.Word.Application();
+                //Application app = new Application();
+                //Document doc = app.Documents.Add(Visible: true);
 
-            //var room = _context.Rooms.Where(x => x.Id == id);
-
-
-            var wordDoc = wordApp.Documents.Add(Path.GetFullPath(@"documents\statement_foreign.docx"));//Открываем шаблон
-            ReplaceStub("{Name}", statement.UserNameGenitiveCase.ToString(), wordDoc);//Заменяем метку на данные из формы(здесь конкретно из текстбокса с именем textBox_fio)
-            ReplaceStub("{LastName}", statement.UserLastNameGenitiveCase.ToString(), wordDoc);
-            ReplaceStub("{Surname}", statement.UserSurNameGenitiveCase.ToString(), wordDoc);
-            ReplaceStub("{Place}", statement.InstitutionWhereYouGo.ToString(), wordDoc);
-            ReplaceStub("{Country}", statement.StatementCountryOfDestination.ToString(), wordDoc);
-            ReplaceStub("{City}", statement.StatementPlaceOfDestination.ToString(), wordDoc);
-            ReplaceStub("{Purpose}", statement.PurposeOfBusinessTrip.ToString(), wordDoc);
-            ReplaceStub("{Transport}", statement.TransportOfBusinessTrip.ToString(), wordDoc);
-            ReplaceStub("{Route}", statement.RouteOfBusinessTrip.ToString(), wordDoc);
-            ReplaceStub("{Basis}", statement.BasisOfBusinessTrip.ToString(), wordDoc);
-            ///Может быть много таких меток
-            string docText = wordDoc.WordOpenXML;
-            byte[] bytes = Encoding.UTF8.GetBytes(docText);
-
-            wordDoc.SaveAs(Path.GetFullPath(@"documents\statement_foreign1.docx"));
+                //var room = _context.Rooms.Where(x => x.Id == id);
 
 
-            wordApp.Quit();
-            wordDoc.Close();
+                var wordDoc = wordApp.Documents.Add(Path.GetFullPath(@"documents\statement_foreign.docx"));//Открываем шаблон
+                ReplaceStub("{Name}", statement.UserNameGenitiveCase.ToString(), wordDoc);//Заменяем метку на данные из формы(здесь конкретно из текстбокса с именем textBox_fio)
+                ReplaceStub("{LastName}", statement.UserLastNameGenitiveCase.ToString(), wordDoc);
+                ReplaceStub("{Surname}", statement.UserSurNameGenitiveCase.ToString(), wordDoc);
+                ReplaceStub("{Place}", statement.InstitutionWhereYouGo.ToString(), wordDoc);
+                ReplaceStub("{Country}", statement.StatementCountryOfDestination.ToString(), wordDoc);
+                ReplaceStub("{City}", statement.StatementPlaceOfDestination.ToString(), wordDoc);
+                ReplaceStub("{Purpose}", statement.PurposeOfBusinessTrip.ToString(), wordDoc);
+                ReplaceStub("{Transport}", statement.TransportOfBusinessTrip.ToString(), wordDoc);
+                ReplaceStub("{Route}", statement.RouteOfBusinessTrip.ToString(), wordDoc);
+                ReplaceStub("{Basis}", statement.BasisOfBusinessTrip.ToString(), wordDoc);
+                ///Может быть много таких меток
+                string docText = wordDoc.WordOpenXML;
+                statement.FileData = Encoding.UTF8.GetBytes(docText);
+                _context.SaveChangesAsync();
+                //using (Stream file = File.OpenWrite(Path.GetFullPath(@"documents\statement_foreign1.docx")))
+                //{
+                //    file.Write(bytes, 0, bytes.Length);
+                //}
+
+                //try
+                //{ 
+                //    File.WriteAllBytes(Path.GetFullPath(@"documents\statement_foreign1.docx"), bytes);
+                //}
+                //catch(Exception ex)
+                //{
+
+                //}
+                //wordDoc.SaveAs(Path.GetFullPath(@"documents\statement_foreign1.docx"));
+                //wordDoc.Save();
+
+                //wordApp.Quit();
+                //wordDoc.Close();
+            }
+            catch(Exception ex)
+            {
+
+            }
             //wordApp.Visible = true;
         }
     }

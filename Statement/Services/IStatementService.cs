@@ -1,4 +1,5 @@
 ﻿using BusinessTrip.Models;
+using Statement.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace Statement.Services
     public interface IStatementService
     {
         Task CreateStatement(ApplicationStatement statement);
+
+        StatementViewModel GetAllStatements();
 
         void WorkWithDocFile(ApplicationStatement statement);
     }

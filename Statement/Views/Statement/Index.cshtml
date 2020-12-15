@@ -1,4 +1,4 @@
-﻿
+﻿@model Statement.ViewModel.StatementViewModel
 @{
     ViewData["Title"] = "Index";
 }
@@ -7,4 +7,48 @@
 
 <div style="margin-top: 25px; margin-bottom: 25px">
     <a asp-action="Create" type="button" class="btn btn-primary">Create New</a>
+</div>
+
+
+<div class="container-padding">
+    <div class="row">
+        <!-- Start Panel -->
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body table-responsive">
+                    <table id="example0" class="table-bordered display">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Last Name</th>
+                                <th>Surname</th>
+                                <th>Doc</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Statements)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserNameGenitiveCase)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserLastNameGenitiveCase)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserSurNameGenitiveCase)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Download", "PDFDownload")
+                                    </td>
+                                    
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

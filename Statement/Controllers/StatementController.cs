@@ -19,8 +19,21 @@ namespace Statement.Controllers
 
         public IActionResult Index()
         {
-            return View();
+
+            var statements = _statementService.GetAllStatements();
+            return View(statements);
         }
+
+
+        //[HttpGet]
+        //public FileResult PDFDownload()
+        //{
+
+        //    var statements = _statementService.GetAllStatements().Statements.FirstOrDefault();
+        //    byte[] pdfByte = statements.FileData;
+        //    return File(pdfByte, "i.docx", "qwe");
+        //}
+
 
         public IActionResult Create()
         {

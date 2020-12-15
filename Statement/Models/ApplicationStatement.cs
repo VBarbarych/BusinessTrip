@@ -97,6 +97,8 @@ namespace BusinessTrip.Models
         [MaxLength(200)]
         public string BasisOfBusinessTrip { get; set; } // підстава відрядження                                        ------------------------------------- other
 
+        public byte[] FileData { get; set; }
+
         public virtual ICollection<ApplicationUserStatement> UserStatements { get; set; }
         public virtual ICollection<ApplicationStatementFile> StatementFiles { get; set; }
         public virtual ICollection<ApplicationCurrentStatus> CurrentStatuses { get; set; }
