@@ -30,8 +30,8 @@ namespace Statement.Controllers
         {
 
             var statements = _statementService.GetAllStatements().Statements.FirstOrDefault();
-            byte[] pdfByte = statements.FileData;
-            return File(pdfByte, "i.docx", "qwe");
+            byte[] pdfByte = _statementService.WorkWithDocFile(statements);
+            return File(pdfByte, "i.docx", "doc");
         }
 
 

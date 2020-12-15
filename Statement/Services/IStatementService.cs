@@ -13,6 +13,6 @@ namespace Statement.Services
 
         StatementViewModel GetAllStatements();
 
-        void WorkWithDocFile(ApplicationStatement statement);
+        byte[] WorkWithDocFile(ApplicationStatement statement);
     }
 }

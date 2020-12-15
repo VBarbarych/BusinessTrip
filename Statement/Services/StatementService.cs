@@ -49,10 +49,11 @@ namespace Statement.Services
             range.Find.Execute(FindText: stubToReplace, ReplaceWith: text, Replace: wdReplaceAll);
         }
 
-        public void WorkWithDocFile(ApplicationStatement statement)
+        public byte[] WorkWithDocFile(ApplicationStatement statement)
         {
-            try
-            { 
+
+             
+            
                 var wordApp = new Microsoft.Office.Interop.Word.Application();
                 //Application app = new Application();
                 //Document doc = app.Documents.Add(Visible: true);
@@ -73,8 +74,9 @@ namespace Statement.Services
                 ReplaceStub("{Basis}", statement.BasisOfBusinessTrip.ToString(), wordDoc);
                 ///Может быть много таких меток
                 string docText = wordDoc.WordOpenXML;
-                statement.FileData = Encoding.UTF8.GetBytes(docText);
-                _context.SaveChangesAsync();
+                var arr = Encoding.UTF8.GetBytes(docText);
+
+                //_context.SaveChangesAsync();
                 //using (Stream file = File.OpenWrite(Path.GetFullPath(@"documents\statement_foreign1.docx")))
                 //{
                 //    file.Write(bytes, 0, bytes.Length);
@@ -93,12 +95,10 @@ namespace Statement.Services
 
                 //wordApp.Quit();
                 //wordDoc.Close();
-            }
-            catch(Exception ex)
-            {
-
-            }
+            
             //wordApp.Visible = true;
+            return arr;
+
         }
     }
 }
