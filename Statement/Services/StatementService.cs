@@ -51,51 +51,48 @@ namespace Statement.Services
 
         public byte[] WorkWithDocFile(ApplicationStatement statement)
         {
+            var wordApp = new Microsoft.Office.Interop.Word.Application();
+            //Application app = new Application();
+            //Document doc = app.Documents.Add(Visible: true);
 
-             
-            
-                var wordApp = new Microsoft.Office.Interop.Word.Application();
-                //Application app = new Application();
-                //Document doc = app.Documents.Add(Visible: true);
-
-                //var room = _context.Rooms.Where(x => x.Id == id);
+            //var room = _context.Rooms.Where(x => x.Id == id);
 
 
-                var wordDoc = wordApp.Documents.Add(Path.GetFullPath(@"documents\statement_foreign.docx"));//Открываем шаблон
-                ReplaceStub("{Name}", statement.UserNameGenitiveCase.ToString(), wordDoc);//Заменяем метку на данные из формы(здесь конкретно из текстбокса с именем textBox_fio)
-                ReplaceStub("{LastName}", statement.UserLastNameGenitiveCase.ToString(), wordDoc);
-                ReplaceStub("{Surname}", statement.UserSurNameGenitiveCase.ToString(), wordDoc);
-                ReplaceStub("{Place}", statement.InstitutionWhereYouGo.ToString(), wordDoc);
-                ReplaceStub("{Country}", statement.StatementCountryOfDestination.ToString(), wordDoc);
-                ReplaceStub("{City}", statement.StatementPlaceOfDestination.ToString(), wordDoc);
-                ReplaceStub("{Purpose}", statement.PurposeOfBusinessTrip.ToString(), wordDoc);
-                ReplaceStub("{Transport}", statement.TransportOfBusinessTrip.ToString(), wordDoc);
-                ReplaceStub("{Route}", statement.RouteOfBusinessTrip.ToString(), wordDoc);
-                ReplaceStub("{Basis}", statement.BasisOfBusinessTrip.ToString(), wordDoc);
-                ///Может быть много таких меток
-                string docText = wordDoc.WordOpenXML;
-                var arr = Encoding.UTF8.GetBytes(docText);
+            var wordDoc = wordApp.Documents.Add(Path.GetFullPath(@"documents\statement_foreign.docx"));//Открываем шаблон
+            ReplaceStub("{Name}", statement.UserNameGenitiveCase.ToString(), wordDoc);//Заменяем метку на данные из формы(здесь конкретно из текстбокса с именем textBox_fio)
+            ReplaceStub("{LastName}", statement.UserLastNameGenitiveCase.ToString(), wordDoc);
+            ReplaceStub("{Surname}", statement.UserSurNameGenitiveCase.ToString(), wordDoc);
+            ReplaceStub("{Place}", statement.InstitutionWhereYouGo.ToString(), wordDoc);
+            ReplaceStub("{Country}", statement.StatementCountryOfDestination.ToString(), wordDoc);
+            ReplaceStub("{City}", statement.StatementPlaceOfDestination.ToString(), wordDoc);
+            ReplaceStub("{Purpose}", statement.PurposeOfBusinessTrip.ToString(), wordDoc);
+            ReplaceStub("{Transport}", statement.TransportOfBusinessTrip.ToString(), wordDoc);
+            ReplaceStub("{Route}", statement.RouteOfBusinessTrip.ToString(), wordDoc);
+            ReplaceStub("{Basis}", statement.BasisOfBusinessTrip.ToString(), wordDoc);
+            ///Может быть много таких меток
+            string docText = wordDoc.WordOpenXML;
+            var arr = Encoding.UTF8.GetBytes(docText);
 
-                //_context.SaveChangesAsync();
-                //using (Stream file = File.OpenWrite(Path.GetFullPath(@"documents\statement_foreign1.docx")))
-                //{
-                //    file.Write(bytes, 0, bytes.Length);
-                //}
+            //_context.SaveChangesAsync();
+            //using (Stream file = File.OpenWrite(Path.GetFullPath(@"documents\statement_foreign1.docx")))
+            //{
+            //    file.Write(bytes, 0, bytes.Length);
+            //}
 
-                //try
-                //{ 
-                //    File.WriteAllBytes(Path.GetFullPath(@"documents\statement_foreign1.docx"), bytes);
-                //}
-                //catch(Exception ex)
-                //{
+            //try
+            //{ 
+            //    File.WriteAllBytes(Path.GetFullPath(@"documents\statement_foreign1.docx"), bytes);
+            //}
+            //catch(Exception ex)
+            //{
 
-                //}
-                //wordDoc.SaveAs(Path.GetFullPath(@"documents\statement_foreign1.docx"));
-                //wordDoc.Save();
+            //}
+            //wordDoc.SaveAs(Path.GetFullPath(@"documents\statement_foreign1.docx"));
+            //wordDoc.Save();
 
-                //wordApp.Quit();
-                //wordDoc.Close();
-            
+            //wordApp.Quit();
+            //wordDoc.Close();
+
             //wordApp.Visible = true;
             return arr;
 

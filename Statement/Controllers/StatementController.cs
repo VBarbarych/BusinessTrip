@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using BusinessTrip.Models;
@@ -25,14 +26,27 @@ namespace Statement.Controllers
         }
 
 
-        [HttpGet]
-        public FileResult PDFDownload()
-        {
+        //[HttpGet]
+        //public FileResult PDFDownload()
+        //{
 
+        //    var statements = _statementService.GetAllStatements().Statements.FirstOrDefault();
+
+        //    byte[] pdfByte = _statementService.WorkWithDocFile(statements);
+
+        //    return File(pdfByte, "i.docx", "doc");
+        //}
+
+        [HttpGet]
+        public FileStreamResult PDFDownload()
+        {
             var statements = _statementService.GetAllStatements().Statements.FirstOrDefault();
             byte[] pdfByte = _statementService.WorkWithDocFile(statements);
-            return File(pdfByte, "i.docx", "doc");
+            var memoryStream = new MemoryStream(pdfByte);
+
+            return File(memoryStream, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "Заява на відрядження.doc");
         }
+
 
 
         public IActionResult Create()
