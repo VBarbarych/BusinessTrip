@@ -227,6 +227,28 @@ namespace Statement.Data.Migrations
                     b.HasKey("StatusId");
 
                     b.ToTable("AspStatus");
+
+                    b.HasData(
+                        new
+                        {
+                            StatusId = 1,
+                            StatusName = "Прийнято на розляд"
+                        },
+                        new
+                        {
+                            StatusId = 2,
+                            StatusName = "До опрацювання"
+                        },
+                        new
+                        {
+                            StatusId = 3,
+                            StatusName = "Схвалено"
+                        },
+                        new
+                        {
+                            StatusId = 4,
+                            StatusName = "Зареєстровано"
+                        });
                 });
 
             modelBuilder.Entity("BusinessTrip.Models.ApplicationUserStatement", b =>
@@ -270,6 +292,22 @@ namespace Statement.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            ConcurrencyStamp = "7e1aacc3-da33-4289-b030-3711e55ecf1d",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            ConcurrencyStamp = "aaca14a9-0369-499c-8bd2-51850af364e2",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -365,6 +403,40 @@ namespace Statement.Data.Migrations
                     b.ToTable("AspNetUsers");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "263c2ac8-2207-4359-94ce-55bed967ce21",
+                            Email = "admin@admin.admin",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "admin@admin.admin",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAECIrtbWfHBg3b9cG/mrgBPLEojIaIX+y5qkgesz0l5Xwk2xj9KFM5jGxHAEGwGCjPA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "",
+                            TwoFactorEnabled = false,
+                            UserName = "Admin"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "d75451ea-9a57-4027-aeb6-4ccbb9a26b9d",
+                            Email = "user@user.user",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "user@user.user",
+                            NormalizedUserName = "STAFF",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHH5K6GIhO1hFmmwUEWOQsxWMVXXw5OWKM0L7GZzd3yXdTA+g9kwRRN533I13q/zkg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "",
+                            TwoFactorEnabled = false,
+                            UserName = "User"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -428,6 +500,18 @@ namespace Statement.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "1",
+                            RoleId = "1"
+                        },
+                        new
+                        {
+                            UserId = "2",
+                            RoleId = "2"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
