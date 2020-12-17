@@ -37,6 +37,41 @@ namespace Statement.Data
 
             builder.Entity<ApplicationStatementFile>()
                 .HasKey(c => new { c.StatementId, c.FileId });
+
+            builder.Entity<IdentityRole>().HasData(new List<IdentityRole>
+            {
+                new IdentityRole {
+                    Id = "1",
+                    Name = "Admin",
+                    NormalizedName = "ADMIN"
+                },
+                new IdentityRole {
+                    Id = "2",
+                    Name = "User",
+                    NormalizedName = "USER"
+                },
+            });
+
+            builder.Entity<ApplicationStatus>().HasData(new List<ApplicationStatus>
+            {
+                new ApplicationStatus {
+                    StatusId = 1,
+                    StatusName = "Прийнято на розляд",
+                },
+                new ApplicationStatus {
+                    StatusId = 2,
+                    StatusName = "До опрацювання",
+                },
+                new ApplicationStatus {
+                    StatusId = 3,
+                    StatusName = "Схвалено",
+                },
+                new ApplicationStatus {
+                    StatusId = 4,
+                    StatusName = "Зареєстровано",
+                },
+            });
+
         }
     }
 }
