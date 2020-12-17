@@ -5,17 +5,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using BusinessTrip.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
 using Statement.Services;
 
 namespace Statement.Controllers
 {
     public class StatementController : Controller
     {
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly IStatementService _statementService;
 
-        public StatementController(IStatementService statementService)
+        public StatementController(IStatementService statementService, UserManager<IdentityUser> userManager)
         {
             _statementService = statementService;
+            _userManager = userManager;
         }
 
         public IActionResult Index()
@@ -60,10 +63,16 @@ namespace Statement.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _statementService.CreateStatement(statement);
-                _statementService.WorkWithDocFile(statement);
+                var userName = HttpContext.User.Claims.FirstOrDefault(user => user.Type.EndsWith("name"))?.Value;
 
-                return RedirectToAction(nameof(Index));
+                if (userName != null)
+                {
+                    var user = await _userManager.FindByNameAsync(userName);
+                    await _statementService.CreateStatement(statement, user);
+                    //_statementService.WorkWithDocFile(statement);
+
+                    return RedirectToAction(nameof(Index));
+                }
             }
 
             return View(statement);

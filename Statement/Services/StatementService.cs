@@ -1,4 +1,5 @@
-﻿using BusinessTrip.Models;
+﻿using Microsoft.AspNetCore.Identity;
+using BusinessTrip.Models;
 using Microsoft.EntityFrameworkCore;
 using Statement.Data;
 using Statement.ViewModel;
@@ -22,9 +23,33 @@ namespace Statement.Services
             DbSet = context.Set<ApplicationStatement>();
         }
 
-        public async Task CreateStatement(ApplicationStatement statement)
+        public async Task CreateStatement(ApplicationStatement statement, IdentityUser user)
         {
+            //Adding statement
             DbSet.Add(statement);
+            _context.SaveChanges();
+            //binding statement to user
+            _context.AspUserStatement.Add(new ApplicationUserStatement
+            {
+                StatementId = statement.StatementId,
+                Id = user.Id
+            });
+            //setting current status
+            _context.AspCurrentStatus.Add(new ApplicationCurrentStatus { 
+                CurrentСomment = "",
+                StatementId = statement.StatementId,
+                StatusId = 1,
+                DateOfLastChanges = DateTime.Now
+            });
+            //adding current status to history of statuses
+            _context.AspHistoryOfStatus.Add(new ApplicationHistoryOfStatus
+            {
+                HistoryOfStatusId = statement.StatementId,
+                StatusId = 1,
+                DateOfChanges = DateTime.Now,
+                Сomment = "",
+            });
+            //
             await _context.SaveChangesAsync();
         }
 
