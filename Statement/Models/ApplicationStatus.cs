@@ -22,9 +22,15 @@ namespace BusinessTrip.Models
 
         [Required]
         [MaxLength(100)]
+        [Display(Name = "Статус")]
         public string StatusName { get; set; }
 
         public virtual ICollection<ApplicationCurrentStatus> CurrentStatuses { get; set; }
         public virtual ICollection<ApplicationHistoryOfStatus> HistoryOfStatuses { get; set; }
+
+        public override string ToString()
+        {
+            return StatusName;
+        }
     }
 }
