@@ -27,9 +27,11 @@ namespace BusinessTrip.Models
         [Required]
         [DataType(DataType.DateTime, ErrorMessage = "Введіть коректну дату у форматі: dd/mm/yyyy hh:mm")]
         [Range(typeof(DateTime), "1/1/2010", "1/1/2100")]
+        [Display(Name = "Дата")]
         public DateTime? DateOfChanges { get; set; }
 
         [MaxLength(450)]
+        [Display(Name = "Коментар")]
         public string Сomment { get; set; }
     }
 }
