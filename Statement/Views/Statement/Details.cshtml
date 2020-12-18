@@ -1,0 +1,206 @@
+﻿@model Statement.ViewModel.StatementWithAllStatuses
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Деталі заяви</h1>
+
+<div>
+    <h4>Заява</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Statement.UserNameGenitiveCase)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Statement.UserNameGenitiveCase)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Statement.UserSurNameGenitiveCase)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Statement.UserSurNameGenitiveCase)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Statement.UserLastNameGenitiveCase)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Statement.UserLastNameGenitiveCase)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Statement.SubdivisionAtTheMainPlaceOfWork)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Statement.SubdivisionAtTheMainPlaceOfWork)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Statement.PositionAtTheMainPlaceOfWork)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Statement.PositionAtTheMainPlaceOfWork)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Statement.SubdivisionPartTime)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Statement.SubdivisionPartTime)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Statement.PositionPartTime)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Statement.PositionPartTime)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Statement.TypeOfBusinessTrip)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Statement.TypeOfBusinessTrip)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Statement.PurposeOfBusinessTrip)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Statement.PurposeOfBusinessTrip)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Statement.TypeOfSalaryRetention)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Statement.TypeOfSalaryRetention)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Statement.StatementPlaceOfDestination)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Statement.StatementPlaceOfDestination)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Statement.StatementCountryOfDestination)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Statement.StatementCountryOfDestination)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Statement.InstitutionWhereYouGo)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Statement.InstitutionWhereYouGo)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Statement.DateOfBusinessTrip)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Statement.DateOfBusinessTrip)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Statement.DateOfСompletionBusinessTrip)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Statement.DateOfСompletionBusinessTrip)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Statement.RouteOfBusinessTrip)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Statement.RouteOfBusinessTrip)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Statement.TransportOfBusinessTrip)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Statement.TransportOfBusinessTrip)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Statement.PaymentOfTravelExpenses)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Statement.PaymentOfTravelExpenses)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Statement.BasisOfBusinessTrip)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Statement.BasisOfBusinessTrip)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Statement.FileData)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Statement.FileData)
+        </dd>
+    </dl>
+
+    <h4>Статус заяви</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CurrentStatus.Statement)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.CurrentStatus.Statement.StatementId)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CurrentStatus.Status)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.CurrentStatus.Status.StatusName)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CurrentStatus.DateOfLastChanges)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.CurrentStatus.DateOfLastChanges)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CurrentStatus.CurrentСomment)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.CurrentStatus.CurrentСomment)
+        </dd>
+    </dl>
+
+    <h4>Історія заяви</h4>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.HistoryOfStatuses.FirstOrDefault().Statement)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HistoryOfStatuses.FirstOrDefault().Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HistoryOfStatuses.FirstOrDefault().DateOfChanges)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HistoryOfStatuses.FirstOrDefault().Сomment)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.HistoryOfStatuses)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Statement.StatementId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status.StatusName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfChanges)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Сomment)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Statements">Назад до заяв</a>
+</div>

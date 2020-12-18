@@ -1,0 +1,138 @@
+﻿@model BusinessTrip.Models.ApplicationStatement
+
+@{
+    ViewData["Title"] = "StatementDetails";
+}
+
+<h1>StatementDetails</h1>
+
+<div>
+    <h4>ApplicationStatement</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.UserNameGenitiveCase)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.UserNameGenitiveCase)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.UserSurNameGenitiveCase)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.UserSurNameGenitiveCase)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.UserLastNameGenitiveCase)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.UserLastNameGenitiveCase)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.SubdivisionAtTheMainPlaceOfWork)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.SubdivisionAtTheMainPlaceOfWork)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.PositionAtTheMainPlaceOfWork)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.PositionAtTheMainPlaceOfWork)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.SubdivisionPartTime)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.SubdivisionPartTime)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.PositionPartTime)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.PositionPartTime)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.TypeOfBusinessTrip)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.TypeOfBusinessTrip)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.PurposeOfBusinessTrip)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.PurposeOfBusinessTrip)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.TypeOfSalaryRetention)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.TypeOfSalaryRetention)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.StatementPlaceOfDestination)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.StatementPlaceOfDestination)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.StatementCountryOfDestination)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.StatementCountryOfDestination)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.InstitutionWhereYouGo)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.InstitutionWhereYouGo)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.DateOfBusinessTrip)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.DateOfBusinessTrip)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.DateOfСompletionBusinessTrip)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.DateOfСompletionBusinessTrip)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.RouteOfBusinessTrip)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.RouteOfBusinessTrip)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.TransportOfBusinessTrip)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.TransportOfBusinessTrip)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.PaymentOfTravelExpenses)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.PaymentOfTravelExpenses)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.BasisOfBusinessTrip)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.BasisOfBusinessTrip)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.FileData)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.FileData)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.StatementId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,107 @@
+﻿@model IEnumerable<BusinessTrip.Models.ApplicationStatement>
+
+@{
+    ViewData["Title"] = "Statements";
+}
+
+<h1>Statements</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserNameGenitiveCase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserSurNameGenitiveCase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserLastNameGenitiveCase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PositionAtTheMainPlaceOfWork)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PurposeOfBusinessTrip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatementPlaceOfDestination)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBusinessTrip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfСompletionBusinessTrip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BasisOfBusinessTrip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FileData)
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserNameGenitiveCase)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserSurNameGenitiveCase)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserLastNameGenitiveCase)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PositionAtTheMainPlaceOfWork)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PurposeOfBusinessTrip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatementPlaceOfDestination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBusinessTrip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfСompletionBusinessTrip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BasisOfBusinessTrip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileData)
+            </td>
+
+            <td> 
+            <a asp-action="Edit" asp-route-id="@item.StatementId">Редагувати</a> 
+            </td>
+            <td> 
+            <a asp-action="Details" asp-route-id="@item.StatementId">Деталі</a>
+            </td>
+            <td> 
+            <a asp-action="Delete" asp-route-id="@item.StatementId"  onclick="return confirmation();">Видалити</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    function confirmation() {
+        if (confirm('Чи ви дійсно бажаєте видалити заяву?')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
