@@ -1,0 +1,42 @@
+﻿@model BusinessTrip.Models.ApplicationCurrentStatus
+
+@{
+    ViewData["Title"] = "CurrentStatusDetails";
+}
+
+<h1>CurrentStatusDetails</h1>
+
+<div>
+    <h4>ApplicationCurrentStatus</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.Statement)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Statement.StatementId)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Status.StatusName)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.DateOfLastChanges)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.DateOfLastChanges)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.CurrentСomment)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.CurrentСomment)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.CurrentStatusId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

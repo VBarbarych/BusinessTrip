@@ -1,0 +1,53 @@
+﻿@model IEnumerable<BusinessTrip.Models.ApplicationHistoryOfStatus>
+
+@{
+    ViewData["Title"] = "HistoryOfStatusList";
+}
+
+<h1>HistoryOfStatusList</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Statement)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfChanges)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Сomment)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Statement.StatementId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status.StatusName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfChanges)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Сomment)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CurrentStatusId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CurrentStatusId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CurrentStatusId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
