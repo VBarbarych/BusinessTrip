@@ -46,10 +46,10 @@
             {
                 <h5 class="card-title">None at the moment</h5>
             }
-            <a class="btn btn-primary" style="width:auto"
-               asp-controller="AdministrationController" asp-action="CreateRole">
-                Create Role
-            </a>
+        </div>
+        <div class="card-footer">
+            <a asp-action="EditUserInRole" asp-controller="Administration"
+               asp-route-roleId="@Model.RoleId" class="btn btn-primary" style="width:auto">Add or remove users</a>
         </div>
     </div>
 

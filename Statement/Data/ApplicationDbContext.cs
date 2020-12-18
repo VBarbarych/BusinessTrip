@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using BusinessTrip.Models;
 using Microsoft.AspNetCore.Identity;
@@ -71,6 +72,12 @@ namespace Statement.Data
                     StatusName = "Зареєстровано",
                 },
             });
+
+            foreach (var foreignKey in builder.Model.GetEntityTypes()
+                .SelectMany(e => e.GetForeignKeys()))
+            {
+                foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
+            }
 
         }
     }
