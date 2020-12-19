@@ -85,8 +85,8 @@ namespace Statement.Controllers
         //admin list of statements
         public IActionResult Statements()
         {
-            var allStatements = _context.AspStatement;
-            return View(allStatements);
+            var statements = _statementService.GetAllStatements();
+            return View(statements);
         }
 
         ////user list of statements

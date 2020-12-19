@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BusinessTrip.Models.ApplicationStatement>
+﻿@model Statement.ViewModel.StatementViewModel
 
 @{
     ViewData["Title"] = "Statements";
@@ -12,35 +12,65 @@
 <table class="table">
     <thead>
         <tr>
+            @*<th>
+            @Html.DisplayNameFor(model => model.Statements.UserNameGenitiveCase)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserSurNameGenitiveCase)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserLastNameGenitiveCase)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PositionAtTheMainPlaceOfWork)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurposeOfBusinessTrip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatementPlaceOfDestination)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfBusinessTrip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfСompletionBusinessTrip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BasisOfBusinessTrip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FileData)
+        </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.UserNameGenitiveCase)
+                Ім'я
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UserSurNameGenitiveCase)
+                Прізвище
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UserLastNameGenitiveCase)
+                По-батькові
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PositionAtTheMainPlaceOfWork)
+                Посада
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PurposeOfBusinessTrip)
+                Мета відрядження
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StatementPlaceOfDestination)
+                Місто
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateOfBusinessTrip)
+                Дата початку
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateOfСompletionBusinessTrip)
+                Дата завершення
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BasisOfBusinessTrip)
+                Підстава
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FileData)
+                Документ
             </th>
             <th></th>
             <th></th>
@@ -49,7 +79,7 @@
 
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Statements) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.UserNameGenitiveCase)
@@ -79,7 +109,7 @@
                 @Html.DisplayFor(modelItem => item.BasisOfBusinessTrip)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FileData)
+                @Html.ActionLink("Download", "PDFDownload", "Statement")
             </td>
 
             <td> 
