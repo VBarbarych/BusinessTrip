@@ -33,7 +33,7 @@ namespace Statement.Controllers
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser user = new ApplicationUser { Email = model.Email, UserName = model.Email };
+                IdentityUser user = new IdentityUser { Email = model.Email, UserName = model.Email, EmailConfirmed = true };
                 // добавляем пользователя
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
