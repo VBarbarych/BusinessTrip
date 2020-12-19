@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Statement.Services;
 using Statement.Data;
 using Statement.ViewModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace Statement.Controllers
 {
@@ -204,6 +205,43 @@ namespace Statement.Controllers
                 return NotFound();
             }
 
+            return View(statement);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, ApplicationStatement statement)
+        {
+            if(statement.StatementId != id)
+            {
+                return NotFound();
+            }
+
+            if(ModelState.IsValid)
+            {
+                try
+                {
+                    var userName = HttpContext.User.Claims.FirstOrDefault(user => user.Type.EndsWith("name"))?.Value;
+
+                    if (userName != null)
+                    {
+                        var user = await _userManager.FindByNameAsync(userName);
+                        await _statementService.EditItemAsync(statement);
+                    }
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (_context.AspStatement.FindAsync(id) == null)
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+
+                }
+                return RedirectToAction(nameof(Index));
+            }
             return View(statement);
         }
 
