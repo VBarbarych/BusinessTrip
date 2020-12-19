@@ -125,6 +125,7 @@ namespace Statement.ViewModel
 
             applicationStatement.TypeOfBusinessTrip = statement.TypeOfBusinessTrip;
 
+
             if(statement.PurposeOfBusinessTripOption == "")
             {
                 applicationStatement.PurposeOfBusinessTrip = statement.PurposeOfBusinessTripOther;
@@ -132,6 +133,15 @@ namespace Statement.ViewModel
             else
             {
                 applicationStatement.PurposeOfBusinessTrip = statement.PurposeOfBusinessTripOption;
+            }
+
+            if (statement.BasisOfBusinessTripOption == "")
+            {
+                applicationStatement.BasisOfBusinessTrip = statement.BasisOfBusinessTripOther;
+            }
+            else
+            {
+                applicationStatement.BasisOfBusinessTrip = statement.BasisOfBusinessTripOption;
             }
 
             applicationStatement.TypeOfSalaryRetention = statement.TypeOfSalaryRetention;

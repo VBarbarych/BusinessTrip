@@ -85,7 +85,7 @@ namespace Statement.Controllers
                     var applicationStatement = (ApplicationStatement)statement;
                     await _statementService.CreateStatement(applicationStatement, user);
 
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction(nameof(Statements));
                 }
             }
 
@@ -264,7 +264,7 @@ namespace Statement.Controllers
                     }
 
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Statements));
             }
             return View(statement);
         }
