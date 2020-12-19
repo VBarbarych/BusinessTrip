@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BusinessTrip.Models.ApplicationStatement>
+﻿@model Statement.ViewModel.StatementViewModel
 
 @{
     ViewData["Title"] = "Statements";
@@ -12,6 +12,36 @@
 <table class="table">
     <thead>
         <tr>
+            @*<th>
+            @Html.DisplayNameFor(model => model.Statements.UserNameGenitiveCase)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserSurNameGenitiveCase)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserLastNameGenitiveCase)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PositionAtTheMainPlaceOfWork)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurposeOfBusinessTrip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatementPlaceOfDestination)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfBusinessTrip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfСompletionBusinessTrip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BasisOfBusinessTrip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FileData)
+        </th>*@
             <th>
                 ПІБ
             </th>
@@ -19,10 +49,10 @@
                 Посада
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateOfBusinessTrip)
+                Дата початку
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateOfСompletionBusinessTrip)
+                Дата завершення
             </th>
             <th></th>
             <th></th>
@@ -32,7 +62,7 @@
 
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Statements) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.UserNameGenitiveCase) @Html.DisplayFor(modelItem => item.UserSurNameGenitiveCase) @Html.DisplayFor(modelItem => item.UserLastNameGenitiveCase)
@@ -50,8 +80,8 @@
             <td>
                 @Html.ActionLink("Скачати", "PDFDownload", new { id = item.StatementId })
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.StatementId">Редагувати</a>
+            <td> 
+            <a asp-action="Edit" asp-route-id="@item.StatementId">Редагувати</a> 
             </td>
             <td>
                 <a asp-action="Details" asp-route-id="@item.StatementId">Деталі</a>
