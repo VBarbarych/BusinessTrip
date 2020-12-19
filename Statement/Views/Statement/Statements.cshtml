@@ -7,7 +7,7 @@
 <h1>Statements</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Подати заяву</a>
 </p>
 <table class="table">
     <thead>
@@ -43,22 +43,10 @@
             @Html.DisplayNameFor(model => model.FileData)
         </th>*@
             <th>
-                Ім'я
-            </th>
-            <th>
-                Прізвище
-            </th>
-            <th>
-                По-батькові
+                ПІБ
             </th>
             <th>
                 Посада
-            </th>
-            <th>
-                Мета відрядження
-            </th>
-            <th>
-                Місто
             </th>
             <th>
                 Дата початку
@@ -66,12 +54,7 @@
             <th>
                 Дата завершення
             </th>
-            <th>
-                Підстава
-            </th>
-            <th>
-                Документ
-            </th>
+            <th></th>
             <th></th>
             <th></th>
             <th></th>
@@ -82,22 +65,10 @@
 @foreach (var item in Model.Statements) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.UserNameGenitiveCase)
+                @Html.DisplayFor(modelItem => item.UserNameGenitiveCase) @Html.DisplayFor(modelItem => item.UserSurNameGenitiveCase) @Html.DisplayFor(modelItem => item.UserLastNameGenitiveCase)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UserSurNameGenitiveCase)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserLastNameGenitiveCase)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PositionAtTheMainPlaceOfWork)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PurposeOfBusinessTrip)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StatementPlaceOfDestination)
+                @Html.DisplayFor(modelItem => item.PositionAtTheMainPlaceOfWork) @Html.DisplayFor(modelItem => item.SubdivisionAtTheMainPlaceOfWork)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateOfBusinessTrip)
@@ -105,21 +76,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DateOfСompletionBusinessTrip)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BasisOfBusinessTrip)
-            </td>
-            <td>
-                @Html.ActionLink("Download", "PDFDownload", "Statement")
-            </td>
 
+            <td>
+                @Html.ActionLink("Скачати", "PDFDownload", new { id = item.StatementId })
+            </td>
             <td> 
             <a asp-action="Edit" asp-route-id="@item.StatementId">Редагувати</a> 
             </td>
-            <td> 
-            <a asp-action="Details" asp-route-id="@item.StatementId">Деталі</a>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.StatementId">Деталі</a>
             </td>
-            <td> 
-            <a asp-action="Delete" asp-route-id="@item.StatementId"  onclick="return confirmation();">Видалити</a>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.StatementId" onclick="return confirmation();">Видалити</a>
             </td>
         </tr>
 }

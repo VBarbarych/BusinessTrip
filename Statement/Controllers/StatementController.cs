@@ -44,13 +44,23 @@ namespace Statement.Controllers
         //    return File(pdfByte, "i.docx", "doc");
         //}
 
+        //[HttpGet]
+        //public FileStreamResult PDFDownload()
+        //{
+        //    var statements = _statementService.GetAllStatements().Statements.FirstOrDefault();
+        //    byte[] pdfByte = _statementService.WorkWithDocFile(statements);
+        //    var memoryStream = new MemoryStream(pdfByte);
+
+        //    return File(memoryStream, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "Заява на відрядження.doc");
+        //}
+
+        //admin download
         [HttpGet]
-        public FileStreamResult PDFDownload()
+        public FileStreamResult PDFDownload(int id)
         {
-            var statements = _statementService.GetAllStatements().Statements.FirstOrDefault();
+            var statements = _statementService.GetAllStatements().Statements.FirstOrDefault(statement => statement.StatementId == id);
             byte[] pdfByte = _statementService.WorkWithDocFile(statements);
             var memoryStream = new MemoryStream(pdfByte);
-
             return File(memoryStream, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "Заява на відрядження.doc");
         }
 
@@ -104,11 +114,6 @@ namespace Statement.Controllers
         //        return NotFound();
         //    }
         //    //
-        //    var userStatements = _context.AspUserStatement.Where(userStatement => userStatement.Id == user.Id).ToList(); ;
-        //    if (userStatements == null || !userStatements.Any())
-        //    {
-        //        return NotFound();
-        //    }
         //    var allStatements = userStatements.Join(_context.AspStatement,
         //                                             userStatement => userStatement.StatementId,
         //                                             statement => statement.StatementId,
@@ -180,12 +185,13 @@ namespace Statement.Controllers
                 return NotFound();
             }
 
-            var movie = await _context.AspStatement.FindAsync(id);
-            if (movie == null)
+            var statement = await _context.AspStatement.FindAsync(id);
+            if (statement == null)
             {
                 return NotFound();
             }
-            return View(movie);
+
+            return View(statement);
         }
 
         //details admin
