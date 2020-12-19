@@ -95,8 +95,21 @@ namespace Statement.Controllers
         //admin list of statements
         public IActionResult Statements()
         {
-            var statements = _statementService.GetAllStatements();
-            return View(statements);
+            var allStatements = _context.AspStatement.Join(_context.AspCurrentStatus,
+                                                        statement => statement.StatementId,
+                                                        currentStatus => currentStatus.StatementId,
+                                                        (statement, currentStatus) => new StatementWithAllStatuses
+                                                        {
+                                                            Statement = statement,
+                                                            CurrentStatus = currentStatus
+                                                        }).ToList();
+            var statuses = _context.AspStatus.ToList();
+            foreach (var statement in allStatements)
+            {
+                statement.CurrentStatus.Status = statuses.
+                    FirstOrDefault(status => status.StatusId == statement.CurrentStatus.StatusId);
+            }
+            return View(allStatements);
         }
 
         ////user list of statements

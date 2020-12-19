@@ -1,7 +1,7 @@
-﻿@model Statement.ViewModel.StatementViewModel
+﻿@model IEnumerable<Statement.ViewModel.StatementWithAllStatuses>
 
 @{
-    ViewData["Title"] = "Statements";
+    ViewData["Title"] = "Заяви";
 }
 
 <h1>Statements</h1>
@@ -12,36 +12,6 @@
 <table class="table">
     <thead>
         <tr>
-            @*<th>
-            @Html.DisplayNameFor(model => model.Statements.UserNameGenitiveCase)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserSurNameGenitiveCase)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserLastNameGenitiveCase)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PositionAtTheMainPlaceOfWork)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PurposeOfBusinessTrip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StatementPlaceOfDestination)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOfBusinessTrip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOfСompletionBusinessTrip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BasisOfBusinessTrip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FileData)
-        </th>*@
             <th>
                 ПІБ
             </th>
@@ -49,10 +19,13 @@
                 Посада
             </th>
             <th>
-                Дата початку
+                @Html.DisplayNameFor(model => model.Statement.DateOfBusinessTrip)
             </th>
             <th>
-                Дата завершення
+                @Html.DisplayNameFor(model => model.Statement.DateOfСompletionBusinessTrip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentStatus.Status)
             </th>
             <th></th>
             <th></th>
@@ -62,32 +35,35 @@
 
     </thead>
     <tbody>
-@foreach (var item in Model.Statements) {
+@foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.UserNameGenitiveCase) @Html.DisplayFor(modelItem => item.UserSurNameGenitiveCase) @Html.DisplayFor(modelItem => item.UserLastNameGenitiveCase)
+                @Html.DisplayFor(modelItem => item.Statement.UserNameGenitiveCase) @Html.DisplayFor(modelItem => item.Statement.UserSurNameGenitiveCase) @Html.DisplayFor(modelItem => item.Statement.UserLastNameGenitiveCase)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PositionAtTheMainPlaceOfWork) @Html.DisplayFor(modelItem => item.SubdivisionAtTheMainPlaceOfWork)
+                @Html.DisplayFor(modelItem => item.Statement.PositionAtTheMainPlaceOfWork) @Html.DisplayFor(modelItem => item.Statement.SubdivisionAtTheMainPlaceOfWork)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DateOfBusinessTrip)
+                @Html.DisplayFor(modelItem => item.Statement.DateOfBusinessTrip)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DateOfСompletionBusinessTrip)
+                @Html.DisplayFor(modelItem => item.Statement.DateOfСompletionBusinessTrip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentStatus.Status.StatusName)
             </td>
 
             <td>
-                @Html.ActionLink("Скачати", "PDFDownload", new { id = item.StatementId })
-            </td>
-            <td> 
-            <a asp-action="Edit" asp-route-id="@item.StatementId">Редагувати</a> 
+                @Html.ActionLink("Скачати", "PDFDownload", new { id = item.Statement.StatementId })
             </td>
             <td>
-                <a asp-action="Details" asp-route-id="@item.StatementId">Деталі</a>
+                <a asp-action="Edit" asp-route-id="@item.Statement.StatementId">Редагувати</a>
             </td>
             <td>
-                <a asp-action="Delete" asp-route-id="@item.StatementId" onclick="return confirmation();">Видалити</a>
+                <a asp-action="Details" asp-route-id="@item.Statement.StatementId">Деталі</a>
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.Statement.StatementId" onclick="return confirmation();">Видалити</a>
             </td>
         </tr>
 }
