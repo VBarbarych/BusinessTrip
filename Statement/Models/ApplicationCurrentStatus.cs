@@ -22,6 +22,7 @@ namespace BusinessTrip.Models
         [Required]
         public int? StatusId { get; set; }
         [ForeignKey("StatusId")]
+        [Display(Name = "Статус")]
         public virtual ApplicationStatus Status { get; set; }
 
         [Required]
