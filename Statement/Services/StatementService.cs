@@ -42,7 +42,7 @@ namespace Statement.Services
             });
             //setting current status
             _context.AspCurrentStatus.Add(new ApplicationCurrentStatus { 
-                CurrentСomment = "",
+                CurrentСomment = "Подача заяви",
                 StatementId = statement.StatementId,
                 StatusId = 1,
                 DateOfLastChanges = DateTime.Now
@@ -53,7 +53,7 @@ namespace Statement.Services
                 HistoryOfStatusId = statement.StatementId,
                 StatusId = 1,
                 DateOfChanges = DateTime.Now,
-                Сomment = "",
+                Сomment = "Подача заяви",
             });
             //
             await _context.SaveChangesAsync();

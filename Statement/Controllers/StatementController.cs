@@ -27,8 +27,7 @@ namespace Statement.Controllers
         }
 
         public IActionResult Index()
-        {
-
+        { 
             var statements = _statementService.GetAllStatements();
             return View(statements);
         }
@@ -67,12 +66,37 @@ namespace Statement.Controllers
 
 
 
-        public IActionResult Create()
+        [HttpGet]
+        public IActionResult CreateStatement()
         {
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> CreateStatement(CreateStatementViewModel statement)
+        {
+            if (ModelState.IsValid)
+            {
+                var userName = HttpContext.User.Claims.FirstOrDefault(user => user.Type.EndsWith("name"))?.Value;
 
+                if (userName != null)
+                {
+                    var user = await _userManager.FindByNameAsync(userName);
+                    var applicationStatement = (ApplicationStatement)statement;
+                    await _statementService.CreateStatement(applicationStatement, user);
+
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+
+            return View(statement);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
         [HttpPost]
         public async Task<IActionResult> Create(ApplicationStatement statement)
         {
