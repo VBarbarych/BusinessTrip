@@ -32,6 +32,15 @@
         <form asp-action="CreateStatement" method="post"
               onsubmit="if (document.getElementById('agree').checked) { return true; } else {
         alert('Будь ласка підтвердіть, що ви прочитали та погоджуєтеся з повідомленням працівників відділу кадрів щодо змін умов відрядження'); return false; }">
+            <div class="form-group type-of-trip">
+                <label asp-for="TypeOfBusinessTrip" class="control-label"></label>
+                <br>
+                @Html.RadioButtonFor(m => m.TypeOfBusinessTrip, "Відрядження по Україні", new { onclick = "showUkrainianFields();" }) Відрядження по Україні
+                <br>
+                @Html.RadioButtonFor(m => m.TypeOfBusinessTrip, "Відрядження закордон", new { onclick = "showAbroadFields();" }) Відрядження закордон
+                <br>
+                <span asp-validation-for="TypeOfBusinessTrip" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="UserNameGenitiveCase" class="control-label"></label>
                 <input asp-for="UserNameGenitiveCase" class="form-control" />
@@ -67,15 +76,7 @@
                 <input asp-for="PositionPartTime" class="form-control" />
                 <span asp-validation-for="PositionPartTime" class="text-danger"></span>
             </div>
-            <div class="form-group type-of-trip">
-                <label asp-for="TypeOfBusinessTrip" class="control-label"></label>
-                <br>
-                @Html.RadioButtonFor(m => m.TypeOfBusinessTrip, "Відрядження по Україні", new { onclick = "showUkrainianFields();" }) Відрядження по Україні
-                <br>
-                @Html.RadioButtonFor(m => m.TypeOfBusinessTrip, "Відрядження закордон", new { onclick = "showAbroadFields();" }) Відрядження закордон
-                <br>
-                <span asp-validation-for="TypeOfBusinessTrip" class="text-danger"></span>
-            </div>
+            
             <div class="form-group">
                 <label asp-for="PurposeOfBusinessTripOption" class="control-label"></label>
                 <br>

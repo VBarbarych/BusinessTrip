@@ -144,6 +144,15 @@ namespace Statement.ViewModel
                 applicationStatement.BasisOfBusinessTrip = statement.BasisOfBusinessTripOption;
             }
 
+            if (statement.PaymentOfTravelExpensesOption == "")
+            {
+                applicationStatement.PaymentOfTravelExpenses = statement.PaymentOfTravelExpensesOther;
+            }
+            else
+            {
+                applicationStatement.PaymentOfTravelExpenses = statement.PaymentOfTravelExpensesOption;
+            }
+
             applicationStatement.TypeOfSalaryRetention = statement.TypeOfSalaryRetention;
 
             applicationStatement.StatementPlaceOfDestination = statement.StatementPlaceOfDestination;
