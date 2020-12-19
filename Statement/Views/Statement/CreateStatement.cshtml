@@ -1,0 +1,206 @@
+﻿@model Statement.ViewModel.CreateStatementViewModel
+
+@{
+    ViewData["Title"] = "CreateStatement";
+}
+
+<style type="text/css">
+
+    .abroad-fields {
+        display: none;
+    }
+
+    .ukraine-fields {
+        display: none;
+    }
+
+    /*    .type-of-trip input[value="Відрядження по Україні"]:checked  .ukraine-fields {
+        display: block;
+    }
+
+    .type-of-trip input[value="Відрядження закордон"]:checked  .abroad-fields {
+        display: block;
+    }*/
+</style>
+
+<h1>Подача заяви</h1>
+
+<h4>Дані заяви</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateStatement" method="post"
+              onsubmit="if (document.getElementById('agree').checked) { return true; } else {
+        alert('Будь ласка підтвердіть, що ви прочитали та погоджуєтеся з повідомленням працівників відділу кадрів щодо змін умов відрядження'); return false; }">
+            <div class="form-group">
+                <label asp-for="UserNameGenitiveCase" class="control-label"></label>
+                <input asp-for="UserNameGenitiveCase" class="form-control" />
+                <span asp-validation-for="UserNameGenitiveCase" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserSurNameGenitiveCase" class="control-label"></label>
+                <input asp-for="UserSurNameGenitiveCase" class="form-control" />
+                <span asp-validation-for="UserSurNameGenitiveCase" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserLastNameGenitiveCase" class="control-label"></label>
+                <input asp-for="UserLastNameGenitiveCase" class="form-control" />
+                <span asp-validation-for="UserLastNameGenitiveCase" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SubdivisionAtTheMainPlaceOfWork" class="control-label"></label>
+                <input asp-for="SubdivisionAtTheMainPlaceOfWork" class="form-control" />
+                <span asp-validation-for="SubdivisionAtTheMainPlaceOfWork" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PositionAtTheMainPlaceOfWork" class="control-label"></label>
+                <input asp-for="PositionAtTheMainPlaceOfWork" class="form-control" />
+                <span asp-validation-for="PositionAtTheMainPlaceOfWork" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SubdivisionPartTime" class="control-label"></label>
+                <input asp-for="SubdivisionPartTime" class="form-control" />
+                <span asp-validation-for="SubdivisionPartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PositionPartTime" class="control-label"></label>
+                <input asp-for="PositionPartTime" class="form-control" />
+                <span asp-validation-for="PositionPartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group type-of-trip">
+                <label asp-for="TypeOfBusinessTrip" class="control-label"></label>
+                <br>
+                @Html.RadioButtonFor(m => m.TypeOfBusinessTrip, "Відрядження по Україні", new { onclick = "showUkrainianFields();" }) Відрядження по Україні
+                <br>
+                @Html.RadioButtonFor(m => m.TypeOfBusinessTrip, "Відрядження закордон", new { onclick = "showAbroadFields();" }) Відрядження закордон
+                <br>
+                <span asp-validation-for="TypeOfBusinessTrip" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PurposeOfBusinessTripOption" class="control-label"></label>
+                <br>
+                @Html.RadioButtonFor(m => m.PurposeOfBusinessTripOption, "З метою реалізації права на академічну мобільність відповідно до Постанови Кабінету Міністрів України від 12.08.2019 р. №579") З метою реалізації права на академічну мобільність відповідно до Постанови Кабінету Міністрів України від 12.08.2019 р. №579
+                <br>
+                @Html.RadioButtonFor(m => m.PurposeOfBusinessTripOption, "проходження стажування") проходження стажування
+                <br>
+                @Html.RadioButtonFor(m => m.PurposeOfBusinessTripOption, "для викладу лекційного курсу") для викладу лекційного курсу
+                <br>
+                @Html.RadioButtonFor(m => m.PurposeOfBusinessTripOption, "участь в проектній зустрічі") участь в проектній зустрічі
+                <br>
+                @Html.RadioButtonFor(m => m.PurposeOfBusinessTripOption, "участь у тренінгу") участь у тренінгу
+                <br>
+                @Html.RadioButtonFor(m => m.PurposeOfBusinessTripOption, "інше") Інше: <input asp-for="PurposeOfBusinessTripOther" class="form-control" />
+                <span asp-validation-for="PurposeOfBusinessTripOption" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeOfSalaryRetention" class="control-label"></label>
+                <br>
+                @Html.RadioButtonFor(m => m.TypeOfSalaryRetention, "зі збереженням середньої зарплати за основним місце праці") зі збереженням середньої зарплати за основним місцем праці
+                <br>
+                @Html.RadioButtonFor(m => m.TypeOfSalaryRetention, "зі збереженням середньої зарплати за основним місцем праці та за сумісництвом") зі збереженням середньої зарплати за основним місцем праці та за сумісництвом
+                <br>
+                @Html.RadioButtonFor(m => m.TypeOfSalaryRetention, "без збереження заробітної плати (тривалість відрядження більше 10-ти днів)") без збереження заробітної плати (тривалість відрядження більше 10-ти днів)
+                <br>
+                <span asp-validation-for="TypeOfSalaryRetention" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StatementPlaceOfDestination" class="control-label"></label>
+                <input asp-for="StatementPlaceOfDestination" class="form-control" />
+                <span asp-validation-for="StatementPlaceOfDestination" class="text-danger"></span>
+            </div>
+            <div id="CountryOfDestination" class="form-group abroad-fields">
+                <label asp-for="StatementCountryOfDestination" class="control-label"></label>
+                <input asp-for="StatementCountryOfDestination" class="form-control" />
+                <span asp-validation-for="StatementCountryOfDestination" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InstitutionWhereYouGoOption" class="control-label"></label>
+                <br>
+                @Html.RadioButtonFor(m => m.InstitutionWhereYouGoOption, "Міністерство освіти і науки України") Міністерство освіти і науки України
+                <br>
+                @Html.RadioButtonFor(m => m.InstitutionWhereYouGoOption, "інше") Інше: <input asp-for="InstitutionWhereYouGoOther" class="form-control" />
+                <span asp-validation-for="InstitutionWhereYouGoOption" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfBusinessTrip" class="control-label"></label>
+                <input asp-for="DateOfBusinessTrip" class="form-control" />
+                <span asp-validation-for="DateOfBusinessTrip" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfСompletionBusinessTrip" class="control-label"></label>
+                <input asp-for="DateOfСompletionBusinessTrip" class="form-control" />
+                <span asp-validation-for="DateOfСompletionBusinessTrip" class="text-danger"></span>
+            </div>
+            <div id="RouteOfBusinessTrip" class="form-group ukraine-fields">
+                <label asp-for="RouteOfBusinessTrip" class="control-label"></label>
+                <input asp-for="RouteOfBusinessTrip" class="form-control" />
+                <span asp-validation-for="RouteOfBusinessTrip" class="text-danger"></span>
+            </div>
+            <div id="TransportOfBusinessTripOption" class="form-group ukraine-fields">
+                <label asp-for="TransportOfBusinessTripOption" class="control-label"></label>
+                <br>
+                @Html.RadioButtonFor(m => m.TransportOfBusinessTripOption, "залізничий") залізничий
+                <br>
+                @Html.RadioButtonFor(m => m.TransportOfBusinessTripOption, "автомобільний") автомобільний
+                <br>
+                @Html.RadioButtonFor(m => m.TransportOfBusinessTripOption, "літак") літак
+                <br>
+                @Html.RadioButtonFor(m => m.PaymentOfTravelExpensesOption, "інше") Інше: <input asp-for="TransportOfBusinessTripOther" class="form-control" />
+                <span asp-validation-for="TransportOfBusinessTripOption" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaymentOfTravelExpensesOption" class="control-label"></label>
+                <br>
+                @Html.RadioButtonFor(m => m.PaymentOfTravelExpensesOption, "за власний кошт/ за рахунок приймаючої сторони") за власний кошт/ за рахунок приймаючої сторони
+                <br>
+                @Html.RadioButtonFor(m => m.PaymentOfTravelExpensesOption, "витрати на проїзд, добові за рахунок коштів факультету відповідно до кошторису") витрати на проїзд, добові за рахунок коштів факультету відповідно до кошторису
+                <br>
+                @Html.RadioButtonFor(m => m.PaymentOfTravelExpensesOption, "витрати на проїзд, добові за рахунок коштів університету відповідно до кошторису") витрати на проїзд, добові за рахунок коштів університету відповідно до кошторису
+                <br>
+                @Html.RadioButtonFor(m => m.PaymentOfTravelExpensesOption, "інше") Інше: <input asp-for="PaymentOfTravelExpensesOther" class="form-control" />
+                <span asp-validation-for="PaymentOfTravelExpensesOption" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BasisOfBusinessTripOption" class="control-label"></label>
+                <br>
+                @Html.RadioButtonFor(m => m.BasisOfBusinessTripOption, "запрошення") запрошення
+                <br>
+                @Html.RadioButtonFor(m => m.BasisOfBusinessTripOption, "витяг з протоколу засідання Вченої Ради факультету") витяг з протоколу засідання Вченої Ради факультету
+                <br>
+                @Html.RadioButtonFor(m => m.BasisOfBusinessTripOption, "рапорт проректора") рапорт проректора
+                <br>
+                @Html.RadioButtonFor(m => m.BasisOfBusinessTripOption, "інше") Інше: <input asp-for="BasisOfBusinessTripOther" class="form-control" />
+                <span asp-validation-for="BasisOfBusinessTripOption" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="checkbox" name="checkbox" value="check" id="agree" /> Про зміни у суттєвих умовах відрядження (дострокового повернення, зміні дати повернення)
+                повідомити працівників відділу кадрів в найкоротший термін на електронну пошту <a href="mailto:vk101dok@gmail.com"> vk101dok@gmail.com</a>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<script type="text/javascript">
+    function showUkrainianFields() {
+        document.getElementById('CountryOfDestination').style.display = 'none';
+        document.getElementById('RouteOfBusinessTrip').style.display = 'block';
+        document.getElementById('TransportOfBusinessTripOption').style.display = 'block';     
+    }
+    function showAbroadFields() {
+        document.getElementById('CountryOfDestination').style.display = 'block';
+        document.getElementById('RouteOfBusinessTrip').style.display = 'none';
+        document.getElementById('TransportOfBusinessTripOption').style.display = 'none';     
+    }
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
