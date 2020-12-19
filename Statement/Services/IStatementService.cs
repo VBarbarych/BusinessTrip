@@ -10,6 +10,8 @@ namespace Statement.Services
 {
     public interface IStatementService
     {
+
+        Task EditItemAsync(ApplicationStatement statement);
         Task CreateStatement(ApplicationStatement statement, IdentityUser user);
 
         StatementViewModel GetAllStatements();

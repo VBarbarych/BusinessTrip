@@ -23,6 +23,12 @@ namespace Statement.Services
             DbSet = context.Set<ApplicationStatement>();
         }
 
+        public async Task EditItemAsync(ApplicationStatement statement)
+        {
+            _context.Update(statement);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task CreateStatement(ApplicationStatement statement, IdentityUser user)
         {
             //Adding statement
