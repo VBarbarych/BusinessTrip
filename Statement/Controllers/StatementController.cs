@@ -294,7 +294,7 @@ namespace Statement.Controllers
 
             var statementHistoryOfStatuses = _context.AspHistoryOfStatus.
                 Where(historyStatus => historyStatus.HistoryOfStatusId == statement.StatementId).
-                OrderByDescending(historyStatus => historyStatus.DateOfChanges).ToList();
+                OrderBy(historyStatus => historyStatus.DateOfChanges).ToList();
             foreach (var historyStatus in statementHistoryOfStatuses)
             {
                 historyStatus.Status = statuses.
