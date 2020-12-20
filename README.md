@@ -24,3 +24,5 @@
 Проблема  | Вирішення
 ------------- | -------------
 The current .NET SDK does not support targeting .NET Core 3.1  | Завантажте [ASP.NET Core Runtime 3.1.10](https://dotnet.microsoft.com/download/dotnet-core/3.1 "ASP.NET Core Runtime 3.1.10") з офіційного сайту Microsoft
+project.assets.json not found  | Пункт меню: Tools->NuGet Package Manager->Package Manager Console. У вікні введіть команду dotnet restore.
+
