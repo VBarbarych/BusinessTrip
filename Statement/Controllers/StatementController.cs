@@ -10,10 +10,12 @@ using Statement.Services;
 using Statement.Data;
 using Statement.ViewModel;
 using Microsoft.EntityFrameworkCore;
+using Statement.Filters.AuthFilter;
 using Statement.Models;
 
 namespace Statement.Controllers
 {
+    [Auth]
     public class StatementController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
