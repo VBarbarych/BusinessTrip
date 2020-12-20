@@ -10,6 +10,8 @@
     <Compile Remove="Data\Migrations\20201217124348_AddDefaultRolesAndUsers.Designer.cs" />
     <Compile Remove="Data\Migrations\20201217124654_AddDefaultRolesAndUsers.cs" />
     <Compile Remove="Data\Migrations\20201217124654_AddDefaultRolesAndUsers.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201220130700_AddData.cs" />
+    <Compile Remove="Data\Migrations\20201220130700_AddData.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

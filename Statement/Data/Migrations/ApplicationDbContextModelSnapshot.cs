@@ -49,6 +49,24 @@ namespace Statement.Data.Migrations
                     b.HasIndex("StatusId");
 
                     b.ToTable("AspCurrentStatus");
+
+                    b.HasData(
+                        new
+                        {
+                            CurrentStatusId = 1,
+                            CurrentСomment = "Всі дані вказано.",
+                            DateOfLastChanges = new DateTime(2020, 12, 12, 12, 23, 33, 0, DateTimeKind.Unspecified),
+                            StatementId = 1,
+                            StatusId = 4
+                        },
+                        new
+                        {
+                            CurrentStatusId = 2,
+                            CurrentСomment = "Не вказано мети участі.",
+                            DateOfLastChanges = new DateTime(2020, 12, 18, 10, 7, 14, 0, DateTimeKind.Unspecified),
+                            StatementId = 2,
+                            StatusId = 2
+                        });
                 });
 
             modelBuilder.Entity("BusinessTrip.Models.ApplicationFile", b =>
@@ -106,6 +124,40 @@ namespace Statement.Data.Migrations
                     b.HasIndex("StatusId");
 
                     b.ToTable("AspHistoryOfStatus");
+
+                    b.HasData(
+                        new
+                        {
+                            CurrentStatusId = 1,
+                            DateOfChanges = new DateTime(2020, 12, 11, 14, 55, 36, 0, DateTimeKind.Unspecified),
+                            HistoryOfStatusId = 1,
+                            StatusId = 1,
+                            Сomment = "Прийнято на розляд"
+                        },
+                        new
+                        {
+                            CurrentStatusId = 2,
+                            DateOfChanges = new DateTime(2020, 12, 12, 10, 33, 24, 0, DateTimeKind.Unspecified),
+                            HistoryOfStatusId = 1,
+                            StatusId = 3,
+                            Сomment = "Схвалено оскільки всі дані вірно вказані"
+                        },
+                        new
+                        {
+                            CurrentStatusId = 3,
+                            DateOfChanges = new DateTime(2020, 12, 12, 11, 24, 48, 0, DateTimeKind.Unspecified),
+                            HistoryOfStatusId = 2,
+                            StatusId = 2,
+                            Сomment = "Не вказано мети участі"
+                        },
+                        new
+                        {
+                            CurrentStatusId = 4,
+                            DateOfChanges = new DateTime(2020, 12, 12, 12, 23, 33, 0, DateTimeKind.Unspecified),
+                            HistoryOfStatusId = 1,
+                            StatusId = 4,
+                            Сomment = "Зареєстровано в системі"
+                        });
                 });
 
             modelBuilder.Entity("BusinessTrip.Models.ApplicationStatement", b =>
@@ -195,6 +247,54 @@ namespace Statement.Data.Migrations
                     b.HasKey("StatementId");
 
                     b.ToTable("AspStatement");
+
+                    b.HasData(
+                        new
+                        {
+                            StatementId = 1,
+                            BasisOfBusinessTrip = "Запрошення",
+                            DateOfBusinessTrip = new DateTime(2021, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfСompletionBusinessTrip = new DateTime(2021, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            InstitutionWhereYouGo = "Вроцлавський університет",
+                            PaymentOfTravelExpenses = "За власний кошт/ за рахунок приймаючої сторони",
+                            PositionAtTheMainPlaceOfWork = "Діловод",
+                            PositionPartTime = "Архіваріус",
+                            PurposeOfBusinessTrip = "З метою проходження стажування",
+                            RouteOfBusinessTrip = "Львів-Вроцлав-Львів",
+                            StatementCountryOfDestination = "Польща",
+                            StatementPlaceOfDestination = "Вроцлав",
+                            SubdivisionAtTheMainPlaceOfWork = "Архів Університету",
+                            SubdivisionPartTime = "",
+                            TransportOfBusinessTrip = "Залізничний",
+                            TypeOfBusinessTrip = "Відрядження закордон",
+                            TypeOfSalaryRetention = "Зі збереженням середньої зарплати за основним місце праці",
+                            UserLastNameGenitiveCase = "Михайлівної",
+                            UserNameGenitiveCase = "Галини",
+                            UserSurNameGenitiveCase = "Хланти"
+                        },
+                        new
+                        {
+                            StatementId = 2,
+                            BasisOfBusinessTrip = "Запрошення",
+                            DateOfBusinessTrip = new DateTime(2021, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfСompletionBusinessTrip = new DateTime(2021, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            InstitutionWhereYouGo = "Міністерство освіти і науки України ",
+                            PaymentOfTravelExpenses = "За рахунок коштів університету",
+                            PositionAtTheMainPlaceOfWork = "Старший інспектор",
+                            PositionPartTime = "Інспектор з кадрів",
+                            PurposeOfBusinessTrip = "",
+                            RouteOfBusinessTrip = "Львів-Київ-Львів",
+                            StatementCountryOfDestination = "Польща",
+                            StatementPlaceOfDestination = "Київ",
+                            SubdivisionAtTheMainPlaceOfWork = "Відділ кадрів",
+                            SubdivisionPartTime = "",
+                            TransportOfBusinessTrip = "Залізничний",
+                            TypeOfBusinessTrip = "Відрядження по Україні",
+                            TypeOfSalaryRetention = "Зі збереженням середньої зарплати за основним місцем праці та за сумісництвом",
+                            UserLastNameGenitiveCase = "Романівної",
+                            UserNameGenitiveCase = "Лідії",
+                            UserSurNameGenitiveCase = "Яремчук"
+                        });
                 });
 
             modelBuilder.Entity("BusinessTrip.Models.ApplicationStatementFile", b =>
@@ -265,6 +365,18 @@ namespace Statement.Data.Migrations
                     b.HasIndex("StatementId");
 
                     b.ToTable("AspUserStatement");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "3",
+                            StatementId = 1
+                        },
+                        new
+                        {
+                            Id = "4",
+                            StatementId = 2
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -297,14 +409,14 @@ namespace Statement.Data.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "7e1aacc3-da33-4289-b030-3711e55ecf1d",
+                            ConcurrencyStamp = "1bc8dfbe-7adc-42c6-8c87-342c2ee52268",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "aaca14a9-0369-499c-8bd2-51850af364e2",
+                            ConcurrencyStamp = "1d0506e2-c663-4dfd-b962-fd8c54084ce0",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -409,13 +521,13 @@ namespace Statement.Data.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "263c2ac8-2207-4359-94ce-55bed967ce21",
+                            ConcurrencyStamp = "e46009be-622a-4551-8edf-f6889efd349a",
                             Email = "admin@admin.admin",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "admin@admin.admin",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAECIrtbWfHBg3b9cG/mrgBPLEojIaIX+y5qkgesz0l5Xwk2xj9KFM5jGxHAEGwGCjPA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOtKCvMdHNuab0N84F47TeuDsDlAL2Q2AYGCusd8OsEZ658INeHOhN0CTHyaUUH/Uw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -425,17 +537,49 @@ namespace Statement.Data.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d75451ea-9a57-4027-aeb6-4ccbb9a26b9d",
+                            ConcurrencyStamp = "dfe0fa83-e724-4754-aff8-54a411a597a2",
                             Email = "user@user.user",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "user@user.user",
                             NormalizedUserName = "STAFF",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHH5K6GIhO1hFmmwUEWOQsxWMVXXw5OWKM0L7GZzd3yXdTA+g9kwRRN533I13q/zkg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHARS/ggJ5sB4b4FWrH0zr2fNs4jkl98BsVgq2yA7DeZCrSl2JCWyCZ/+1LAyhGUFA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
                             UserName = "User"
+                        },
+                        new
+                        {
+                            Id = "3",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "3b39a423-5814-4a7e-b78b-7a46bcfd7f3f",
+                            Email = "user2@user2.user2",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER2@USER2.USER2",
+                            NormalizedUserName = "USER2",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMuIWrCXTFxSzTvHJU/p9simtV0ShkFpAf6qMlSbH5gvJlHuQMkBbt6hto/phr1KIA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "",
+                            TwoFactorEnabled = false,
+                            UserName = "User2"
+                        },
+                        new
+                        {
+                            Id = "4",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "02cefce7-ef7a-428d-8469-01a0d08bcea0",
+                            Email = "use32@user3.user3",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER3@USER3.USER3",
+                            NormalizedUserName = "USER3",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHjqPFus2MblwmXPGR4UReO0LcePZcTAOKFYPRNkTBebzZXm7FIkR1Jj7NRIDVrYHQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "",
+                            TwoFactorEnabled = false,
+                            UserName = "User3"
                         });
                 });
 
@@ -510,6 +654,16 @@ namespace Statement.Data.Migrations
                         new
                         {
                             UserId = "2",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "3",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "4",
                             RoleId = "2"
                         });
                 });

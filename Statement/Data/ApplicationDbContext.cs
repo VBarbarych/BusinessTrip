@@ -89,6 +89,30 @@ namespace Statement.Data
                     NormalizedEmail = "user@user.user",
                     EmailConfirmed = true,
                     SecurityStamp = string.Empty
+                },
+
+                new IdentityUser
+                {
+                    Id = "3", // primary key
+                    UserName = "User2",
+                    NormalizedUserName = "USER2",
+                    PasswordHash = hasher.HashPassword(null, "!2User"),
+                    Email = "user2@user2.user2",
+                    NormalizedEmail = "USER2@USER2.USER2",
+                    EmailConfirmed = true,
+                    SecurityStamp = string.Empty
+                },
+
+                new IdentityUser
+                {
+                    Id = "4", // primary key
+                    UserName = "User3",
+                    NormalizedUserName = "USER3",
+                    PasswordHash = hasher.HashPassword(null, "!3User"),
+                    Email = "use32@user3.user3",
+                    NormalizedEmail = "USER3@USER3.USER3",
+                    EmailConfirmed = true,
+                    SecurityStamp = string.Empty
                 }
             );
 
@@ -102,8 +126,131 @@ namespace Statement.Data
                 {
                     RoleId = "2", // for staff username
                     UserId = "2"  // for staff role
+                },
+                new IdentityUserRole<string>
+                {
+                    RoleId = "2", // for staff username
+                    UserId = "3"  // for staff role
+                },
+                new IdentityUserRole<string>
+                {
+                    RoleId = "2", // for staff username
+                    UserId = "4"  // for staff role
                 }
+
             );
+
+            builder.Entity<ApplicationStatement>().HasData(new List<ApplicationStatement>
+            {
+                new ApplicationStatement {
+                    StatementId = 1,
+                    UserNameGenitiveCase = "Галини",
+                    UserSurNameGenitiveCase = "Хланти",
+                    UserLastNameGenitiveCase = "Михайлівної",
+                    SubdivisionAtTheMainPlaceOfWork = "Архів Університету",
+                    PositionAtTheMainPlaceOfWork = "Діловод",
+                    SubdivisionPartTime = "",
+                    PositionPartTime  = "Архіваріус",
+                    TypeOfBusinessTrip = "Відрядження закордон",
+                    PurposeOfBusinessTrip = "З метою проходження стажування",
+                    TypeOfSalaryRetention = "Зі збереженням середньої зарплати за основним місце праці",
+                    StatementPlaceOfDestination = "Вроцлав",
+                    StatementCountryOfDestination = "Польща",
+                    InstitutionWhereYouGo = "Вроцлавський університет",
+                    DateOfBusinessTrip = new DateTime(2021, 1, 15),
+                    DateOfСompletionBusinessTrip = new DateTime(2021, 1, 18),
+                    RouteOfBusinessTrip  = "Львів-Вроцлав-Львів",
+                    TransportOfBusinessTrip = "Залізничний",
+                    PaymentOfTravelExpenses = "За власний кошт/ за рахунок приймаючої сторони",
+                    BasisOfBusinessTrip = "Запрошення"
+                },
+
+                new ApplicationStatement {
+                    StatementId = 2,
+                    UserNameGenitiveCase = "Лідії",
+                    UserSurNameGenitiveCase = "Яремчук",
+                    UserLastNameGenitiveCase = "Романівної",
+                    SubdivisionAtTheMainPlaceOfWork = "Відділ кадрів",
+                    PositionAtTheMainPlaceOfWork = "Старший інспектор",
+                    SubdivisionPartTime = "",
+                    PositionPartTime  = "Інспектор з кадрів",
+                    TypeOfBusinessTrip = "Відрядження по Україні",
+                    PurposeOfBusinessTrip = "",
+                    TypeOfSalaryRetention = "Зі збереженням середньої зарплати за основним місцем праці та за сумісництвом",
+                    StatementPlaceOfDestination = "Київ",
+                    StatementCountryOfDestination = "Польща",
+                    InstitutionWhereYouGo = "Міністерство освіти і науки України ",
+                    DateOfBusinessTrip = new DateTime(2021, 1, 12),
+                    DateOfСompletionBusinessTrip = new DateTime(2021, 1, 13),
+                    RouteOfBusinessTrip  = "Львів-Київ-Львів",
+                    TransportOfBusinessTrip = "Залізничний",
+                    PaymentOfTravelExpenses = "За рахунок коштів університету",
+                    BasisOfBusinessTrip = "Запрошення"
+                },
+
+            });
+
+            builder.Entity<ApplicationUserStatement>().HasData(new List<ApplicationUserStatement>
+            {
+                new ApplicationUserStatement {
+                    Id = "3",
+                    StatementId = 1
+                },
+                new ApplicationUserStatement {
+                    Id = "4",
+                    StatementId = 2
+                }
+            });
+
+            builder.Entity<ApplicationCurrentStatus>().HasData(new List<ApplicationCurrentStatus>
+            {
+                new ApplicationCurrentStatus {
+                    CurrentStatusId = 1,
+                    StatementId = 1,
+                    StatusId = 4,
+                    DateOfLastChanges = new DateTime(2020, 12, 12, 12, 23, 33),
+                    CurrentСomment = "Всі дані вказано."
+                },
+                new ApplicationCurrentStatus {
+                    CurrentStatusId = 2,
+                    StatementId = 2,
+                    StatusId = 2,
+                    DateOfLastChanges = new DateTime(2020, 12, 18, 10, 07, 14),
+                    CurrentСomment = "Не вказано мети участі."
+                }
+            });
+
+            builder.Entity<ApplicationHistoryOfStatus>().HasData(new List<ApplicationHistoryOfStatus>
+            {
+                new ApplicationHistoryOfStatus {
+                    CurrentStatusId = 1,
+                    HistoryOfStatusId = 1,                 // насправді це  statementId
+                    StatusId = 1,
+                    DateOfChanges = new DateTime(2020, 12, 11, 14, 55, 36),
+                    Сomment = "Прийнято на розляд"
+                },
+                new ApplicationHistoryOfStatus {
+                    CurrentStatusId = 2,
+                    HistoryOfStatusId = 1,
+                    StatusId = 3,
+                    DateOfChanges = new DateTime(2020, 12, 12, 10, 33, 24),
+                    Сomment = "Схвалено оскільки всі дані вірно вказані"
+                },
+                new ApplicationHistoryOfStatus {
+                    CurrentStatusId = 3,
+                    HistoryOfStatusId = 2,
+                    StatusId = 2,
+                    DateOfChanges = new DateTime(2020, 12, 12, 11, 24, 48),
+                    Сomment = "Не вказано мети участі"
+                },
+                new ApplicationHistoryOfStatus {
+                    CurrentStatusId = 4,
+                    HistoryOfStatusId = 1,
+                    StatusId = 4,
+                    DateOfChanges = new DateTime(2020, 12, 12, 12, 23, 33),
+                    Сomment = "Зареєстровано в системі"
+                },
+            });
 
 
             builder.Entity<ApplicationUserStatement>()
