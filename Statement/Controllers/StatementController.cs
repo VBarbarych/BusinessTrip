@@ -266,13 +266,33 @@ namespace Statement.Controllers
                 return NotFound();
             }
 
-            return View(statement);
+            var statuses = _context.AspStatus.ToList();
+            var statementCurrentStatus = _context.AspCurrentStatus.
+                FirstOrDefault(currentStatus => currentStatus.StatementId == statement.StatementId);
+            statementCurrentStatus.Status = statuses.
+                FirstOrDefault(status => status.StatusId == statementCurrentStatus.StatusId);
+
+            var statementHistoryOfStatuses = _context.AspHistoryOfStatus.
+                Where(historyStatus => historyStatus.HistoryOfStatusId == statement.StatementId).
+                OrderBy(historyStatus => historyStatus.DateOfChanges).ToList();
+            foreach (var historyStatus in statementHistoryOfStatuses)
+            {
+                historyStatus.Status = statuses.
+                    FirstOrDefault(status => status.StatusId == statementCurrentStatus.StatusId);
+            }
+
+            return View(new StatementWithAllStatuses
+            {
+                Statement = statement,
+                CurrentStatus = statementCurrentStatus,
+                HistoryOfStatuses = statementHistoryOfStatuses
+            });
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, ApplicationStatement statement)
+        public async Task<IActionResult> Edit(int id, StatementWithAllStatuses editStatement)
         {
-            if(statement.StatementId != id)
+            if(editStatement.Statement.StatementId != id)
             {
                 return NotFound();
             }
@@ -285,8 +305,18 @@ namespace Statement.Controllers
 
                     if (userName != null)
                     {
-                        var user = await _userManager.FindByNameAsync(userName);
-                        await _statementService.EditItemAsync(statement);
+                        editStatement.CurrentStatus.DateOfLastChanges = DateTime.Now;
+                           var user = await _userManager.FindByNameAsync(userName);
+                        await _statementService.EditItemAsync(editStatement.Statement);
+                        _context.AspCurrentStatus.Update(editStatement.CurrentStatus);
+                        _context.AspHistoryOfStatus.Add(new ApplicationHistoryOfStatus
+                        {
+                        DateOfChanges = editStatement.CurrentStatus.DateOfLastChanges,
+                        HistoryOfStatusId = editStatement.CurrentStatus.StatementId,
+                        StatusId = editStatement.CurrentStatus.StatusId,
+                        Сomment = editStatement.CurrentStatus.CurrentСomment
+                        });
+                        _context.SaveChanges();
                     }
                 }
                 catch (DbUpdateConcurrencyException)
@@ -303,7 +333,7 @@ namespace Statement.Controllers
                 }
                 return RedirectToAction(nameof(Statements));
             }
-            return View(statement);
+            return View(editStatement);
         }
 
         //details admin
@@ -332,7 +362,7 @@ namespace Statement.Controllers
             foreach (var historyStatus in statementHistoryOfStatuses)
             {
                 historyStatus.Status = statuses.
-                    FirstOrDefault(status => status.StatusId == statementCurrentStatus.StatusId);
+                    FirstOrDefault(status => status.StatusId == historyStatus.StatusId);
             }
 
             return View(new StatementWithAllStatuses

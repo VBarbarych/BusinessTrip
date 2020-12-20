@@ -1,121 +1,145 @@
-﻿@model BusinessTrip.Models.ApplicationStatement
+﻿@model Statement.ViewModel.StatementWithAllStatuses
 @{
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Редагування заяви</h1>
 
-<h4>ApplicationStatement</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
+            <h4>Заява</h4>
+            <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="StatementId" />
+            <input type="hidden" asp-for="Statement.StatementId" />
             <div class="form-group">
-                <label asp-for="UserNameGenitiveCase" class="control-label"></label>
-                <input asp-for="UserNameGenitiveCase" class="form-control" />
-                <span asp-validation-for="UserNameGenitiveCase" class="text-danger"></span>
+                <label asp-for="Statement.UserNameGenitiveCase" class="control-label"></label>
+                <input asp-for="Statement.UserNameGenitiveCase" class="form-control" />
+                <span asp-validation-for="Statement.UserNameGenitiveCase" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UserSurNameGenitiveCase" class="control-label"></label>
-                <input asp-for="UserSurNameGenitiveCase" class="form-control" />
-                <span asp-validation-for="UserSurNameGenitiveCase" class="text-danger"></span>
+                <label asp-for="Statement.UserSurNameGenitiveCase" class="control-label"></label>
+                <input asp-for="Statement.UserSurNameGenitiveCase" class="form-control" />
+                <span asp-validation-for="Statement.UserSurNameGenitiveCase" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UserLastNameGenitiveCase" class="control-label"></label>
-                <input asp-for="UserLastNameGenitiveCase" class="form-control" />
-                <span asp-validation-for="UserLastNameGenitiveCase" class="text-danger"></span>
+                <label asp-for="Statement.UserLastNameGenitiveCase" class="control-label"></label>
+                <input asp-for="Statement.UserLastNameGenitiveCase" class="form-control" />
+                <span asp-validation-for="Statement.UserLastNameGenitiveCase" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SubdivisionAtTheMainPlaceOfWork" class="control-label"></label>
-                <input asp-for="SubdivisionAtTheMainPlaceOfWork" class="form-control" />
-                <span asp-validation-for="SubdivisionAtTheMainPlaceOfWork" class="text-danger"></span>
+                <label asp-for="Statement.SubdivisionAtTheMainPlaceOfWork" class="control-label"></label>
+                <input asp-for="Statement.SubdivisionAtTheMainPlaceOfWork" class="form-control" />
+                <span asp-validation-for="Statement.SubdivisionAtTheMainPlaceOfWork" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PositionAtTheMainPlaceOfWork" class="control-label"></label>
-                <input asp-for="PositionAtTheMainPlaceOfWork" class="form-control" />
-                <span asp-validation-for="PositionAtTheMainPlaceOfWork" class="text-danger"></span>
+                <label asp-for="Statement.PositionAtTheMainPlaceOfWork" class="control-label"></label>
+                <input asp-for="Statement.PositionAtTheMainPlaceOfWork" class="form-control" />
+                <span asp-validation-for="Statement.PositionAtTheMainPlaceOfWork" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SubdivisionPartTime" class="control-label"></label>
-                <input asp-for="SubdivisionPartTime" class="form-control" />
-                <span asp-validation-for="SubdivisionPartTime" class="text-danger"></span>
+                <label asp-for="Statement.SubdivisionPartTime" class="control-label"></label>
+                <input asp-for="Statement.SubdivisionPartTime" class="form-control" />
+                <span asp-validation-for="Statement.SubdivisionPartTime" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PositionPartTime" class="control-label"></label>
-                <input asp-for="PositionPartTime" class="form-control" />
-                <span asp-validation-for="PositionPartTime" class="text-danger"></span>
+                <label asp-for="Statement.PositionPartTime" class="control-label"></label>
+                <input asp-for="Statement.PositionPartTime" class="form-control" />
+                <span asp-validation-for="Statement.PositionPartTime" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TypeOfBusinessTrip" class="control-label"></label>
-                <input asp-for="TypeOfBusinessTrip" class="form-control" />
-                <span asp-validation-for="TypeOfBusinessTrip" class="text-danger"></span>
+                <label asp-for="Statement.TypeOfBusinessTrip" class="control-label"></label>
+                <input asp-for="Statement.TypeOfBusinessTrip" class="form-control" />
+                <span asp-validation-for="Statement.TypeOfBusinessTrip" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PurposeOfBusinessTrip" class="control-label"></label>
-                <input asp-for="PurposeOfBusinessTrip" class="form-control" />
-                <span asp-validation-for="PurposeOfBusinessTrip" class="text-danger"></span>
+                <label asp-for="Statement.PurposeOfBusinessTrip" class="control-label"></label>
+                <input asp-for="Statement.PurposeOfBusinessTrip" class="form-control" />
+                <span asp-validation-for="Statement.PurposeOfBusinessTrip" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TypeOfSalaryRetention" class="control-label"></label>
-                <input asp-for="TypeOfSalaryRetention" class="form-control" />
-                <span asp-validation-for="TypeOfSalaryRetention" class="text-danger"></span>
+                <label asp-for="Statement.TypeOfSalaryRetention" class="control-label"></label>
+                <input asp-for="Statement.TypeOfSalaryRetention" class="form-control" />
+                <span asp-validation-for="Statement.TypeOfSalaryRetention" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="StatementPlaceOfDestination" class="control-label"></label>
-                <input asp-for="StatementPlaceOfDestination" class="form-control" />
-                <span asp-validation-for="StatementPlaceOfDestination" class="text-danger"></span>
+                <label asp-for="Statement.StatementPlaceOfDestination" class="control-label"></label>
+                <input asp-for="Statement.StatementPlaceOfDestination" class="form-control" />
+                <span asp-validation-for="Statement.StatementPlaceOfDestination" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="StatementCountryOfDestination" class="control-label"></label>
-                <input asp-for="StatementCountryOfDestination" class="form-control" />
-                <span asp-validation-for="StatementCountryOfDestination" class="text-danger"></span>
+                <label asp-for="Statement.StatementCountryOfDestination" class="control-label"></label>
+                <input asp-for="Statement.StatementCountryOfDestination" class="form-control" />
+                <span asp-validation-for="Statement.StatementCountryOfDestination" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="InstitutionWhereYouGo" class="control-label"></label>
-                <input asp-for="InstitutionWhereYouGo" class="form-control" />
-                <span asp-validation-for="InstitutionWhereYouGo" class="text-danger"></span>
+                <label asp-for="Statement.InstitutionWhereYouGo" class="control-label"></label>
+                <input asp-for="Statement.InstitutionWhereYouGo" class="form-control" />
+                <span asp-validation-for="Statement.InstitutionWhereYouGo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DateOfBusinessTrip" class="control-label"></label>
-                <input asp-for="DateOfBusinessTrip" class="form-control" />
-                <span asp-validation-for="DateOfBusinessTrip" class="text-danger"></span>
+                <label asp-for="Statement.DateOfBusinessTrip" class="control-label"></label>
+                <input asp-for="Statement.DateOfBusinessTrip" class="form-control" />
+                <span asp-validation-for="Statement.DateOfBusinessTrip" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DateOfСompletionBusinessTrip" class="control-label"></label>
-                <input asp-for="DateOfСompletionBusinessTrip" class="form-control" />
-                <span asp-validation-for="DateOfСompletionBusinessTrip" class="text-danger"></span>
+                <label asp-for="Statement.DateOfСompletionBusinessTrip" class="control-label"></label>
+                <input asp-for="Statement.DateOfСompletionBusinessTrip" class="form-control" />
+                <span asp-validation-for="Statement.DateOfСompletionBusinessTrip" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="RouteOfBusinessTrip" class="control-label"></label>
-                <input asp-for="RouteOfBusinessTrip" class="form-control" />
-                <span asp-validation-for="RouteOfBusinessTrip" class="text-danger"></span>
+                <label asp-for="Statement.RouteOfBusinessTrip" class="control-label"></label>
+                <input asp-for="Statement.RouteOfBusinessTrip" class="form-control" />
+                <span asp-validation-for="Statement.RouteOfBusinessTrip" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TransportOfBusinessTrip" class="control-label"></label>
-                <input asp-for="TransportOfBusinessTrip" class="form-control" />
-                <span asp-validation-for="TransportOfBusinessTrip" class="text-danger"></span>
+                <label asp-for="Statement.TransportOfBusinessTrip" class="control-label"></label>
+                <input asp-for="Statement.TransportOfBusinessTrip" class="form-control" />
+                <span asp-validation-for="Statement.TransportOfBusinessTrip" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PaymentOfTravelExpenses" class="control-label"></label>
-                <input asp-for="PaymentOfTravelExpenses" class="form-control" />
-                <span asp-validation-for="PaymentOfTravelExpenses" class="text-danger"></span>
+                <label asp-for="Statement.PaymentOfTravelExpenses" class="control-label"></label>
+                <input asp-for="Statement.PaymentOfTravelExpenses" class="form-control" />
+                <span asp-validation-for="Statement.PaymentOfTravelExpenses" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="BasisOfBusinessTrip" class="control-label"></label>
-                <input asp-for="BasisOfBusinessTrip" class="form-control" />
-                <span asp-validation-for="BasisOfBusinessTrip" class="text-danger"></span>
+                <label asp-for="Statement.BasisOfBusinessTrip" class="control-label"></label>
+                <input asp-for="Statement.BasisOfBusinessTrip" class="form-control" />
+                <span asp-validation-for="Statement.BasisOfBusinessTrip" class="text-danger"></span>
+            </div>
+            <h4>Статус</h4>
+            <hr />
+            <input type="hidden" asp-for="CurrentStatus.CurrentStatusId" />
+            <input type="hidden" asp-for="CurrentStatus.StatementId" />
+            <input type="hidden" asp-for="CurrentStatus.DateOfLastChanges" />
+            <div class="form-group">
+                <label class="control-label" for="CurrentStatus_StatusId">Статус</label>
+                <br>
+                @Html.RadioButtonFor(m => m.CurrentStatus.StatusId, 1) Прийнято на розляд
+                <br>
+                @Html.RadioButtonFor(m => m.CurrentStatus.StatusId, 2) До опрацювання
+                <br>
+                @Html.RadioButtonFor(m => m.CurrentStatus.StatusId, 3) Схвалено
+                <br>
+                @Html.RadioButtonFor(m => m.CurrentStatus.StatusId, 4) Зареєстровано
+                <br>
+                <span asp-validation-for="CurrentStatus.StatusId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CurrentStatus.CurrentСomment" class="control-label"></label>
+                <input asp-for="CurrentStatus.CurrentСomment" class="form-control" />
+                <span asp-validation-for="CurrentStatus.CurrentСomment" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Редагувати" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Назад до заяв</a>
 </div>
 
 
