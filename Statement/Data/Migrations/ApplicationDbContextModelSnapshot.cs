@@ -409,14 +409,14 @@ namespace Statement.Data.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "1bc8dfbe-7adc-42c6-8c87-342c2ee52268",
+                            ConcurrencyStamp = "fc698722-47c6-479c-8407-75fdd73beed2",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "1d0506e2-c663-4dfd-b962-fd8c54084ce0",
+                            ConcurrencyStamp = "28c78e7c-285c-439e-a13c-1be8c6b4bf6e",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -521,13 +521,13 @@ namespace Statement.Data.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e46009be-622a-4551-8edf-f6889efd349a",
+                            ConcurrencyStamp = "8b1d23dc-da60-4c7e-a013-b04ff111d28d",
                             Email = "admin@admin.admin",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "admin@admin.admin",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOtKCvMdHNuab0N84F47TeuDsDlAL2Q2AYGCusd8OsEZ658INeHOhN0CTHyaUUH/Uw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPuixG8h4T6VZpra65SjFfsT7mbm2QUNEkpOCXD5skbRWLC54leMIXP45Dg3dotZ2A==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -537,13 +537,13 @@ namespace Statement.Data.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dfe0fa83-e724-4754-aff8-54a411a597a2",
+                            ConcurrencyStamp = "c4d5b42e-c18e-410b-b66b-fa87cc65b604",
                             Email = "user@user.user",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "user@user.user",
-                            NormalizedUserName = "STAFF",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHARS/ggJ5sB4b4FWrH0zr2fNs4jkl98BsVgq2yA7DeZCrSl2JCWyCZ/+1LAyhGUFA==",
+                            NormalizedUserName = "USER",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOQofcP2Qfgq1EMC/4/ZooxNo0lTgMhwXFRlop2IB2PPbRbi9l3HUGfXUlJyNuIB7g==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -553,13 +553,13 @@ namespace Statement.Data.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3b39a423-5814-4a7e-b78b-7a46bcfd7f3f",
+                            ConcurrencyStamp = "e4f7cf24-bb5e-4720-a534-68d4fff964cd",
                             Email = "user2@user2.user2",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER2@USER2.USER2",
                             NormalizedUserName = "USER2",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMuIWrCXTFxSzTvHJU/p9simtV0ShkFpAf6qMlSbH5gvJlHuQMkBbt6hto/phr1KIA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDQpfRwBMVbSAWM7036QJefmPlbjg1eSMDQnQQDxmTDZArRUFrP0bTm0PLujP6b9Lw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -569,13 +569,13 @@ namespace Statement.Data.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "02cefce7-ef7a-428d-8469-01a0d08bcea0",
+                            ConcurrencyStamp = "4cc2ca7e-72ac-41d0-bcbf-9d4c32556b89",
                             Email = "use32@user3.user3",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER3@USER3.USER3",
                             NormalizedUserName = "USER3",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHjqPFus2MblwmXPGR4UReO0LcePZcTAOKFYPRNkTBebzZXm7FIkR1Jj7NRIDVrYHQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMapmttLO7Wm02Cr+T8DHkfVq6sMjFAyGJ2DxZd5frf8NcvgW7/gqT6EbHIE/9DsSg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,

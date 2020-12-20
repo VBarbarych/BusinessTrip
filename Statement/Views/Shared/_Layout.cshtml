@@ -25,16 +25,15 @@
                         @if (ViewContext.HttpContext.User.Identity.Name == "Admin")
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Statement" asp-action="Statements">Мої заяви</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Statement" asp-action="Statements">Заяви</a>
                             </li>
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Statement" asp-action="Index">Мої заяви</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Statement" asp-action="Index">Заяви</a>
                             </li>
                         }
-
                     </ul>
                 </div>
             </div>

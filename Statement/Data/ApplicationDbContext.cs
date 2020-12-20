@@ -83,7 +83,7 @@ namespace Statement.Data
                 {
                     Id = "2", // primary key
                     UserName = "User",
-                    NormalizedUserName = "STAFF",
+                    NormalizedUserName = "USER",
                     PasswordHash = hasher.HashPassword(null, "!1User"),
                     Email = "user@user.user",
                     NormalizedEmail = "user@user.user",
