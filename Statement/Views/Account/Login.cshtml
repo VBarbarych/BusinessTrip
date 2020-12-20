@@ -1,11 +1,12 @@
 ﻿@model Statement.ViewModel.LoginViewModel
 
-<h2>Вход в приложение</h2>
+<h2>Вхід</h2>
 <form method="post" asp-controller="Account" asp-action="Login"
             asp-route-returnUrl="@Model.ReturnUrl">
     <div asp-validation-summary="ModelOnly"></div>
     <div>
-        <label asp-for="Email"></label><br />
+        <label for="Email">Пошта</label>
+        <br>
         <input asp-for="Email" />
         <span asp-validation-for="Email"></span>
     </div>
@@ -15,7 +16,7 @@
         <span asp-validation-for="Password"></span>
     </div>
     <div>
-        <label asp-for="RememberMe"></label><br />
+        <label for="RememberMe">Запам'ятати мене?</label>
         <input asp-for="RememberMe" />
     </div>
     <div>
