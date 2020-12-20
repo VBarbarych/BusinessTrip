@@ -29,10 +29,36 @@ namespace Statement.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
-        { 
+        public async Task<IActionResult> Index()
+        {
+            var userName = HttpContext.User.Claims.FirstOrDefault(user => user.Type.EndsWith("name"))?.Value;
+
+            if (userName == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.FindByNameAsync(userName);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var allStatements = _context.AspUserStatement.Where(x => x.Id == user.Id).Join(_context.AspStatement,
+                                                     userStatement => userStatement.StatementId,
+                                                     statement => statement.StatementId,
+                                                     (userStatement, statement) => statement).ToList();
+
+
+            var statementViewModel = new StatementViewModel()
+            {
+                Statements = allStatements
+            };
+
             var statements = _statementService.GetAllStatements();
-            return View(statements);
+
+            return View(statementViewModel);
         }
 
 
@@ -88,7 +114,15 @@ namespace Statement.Controllers
                     var applicationStatement = (ApplicationStatement)statement;
                     await _statementService.CreateStatement(applicationStatement, user);
 
-                    return RedirectToAction(nameof(Statements));
+                    if (HttpContext.User.Identity.Name == "Admin")
+                    {
+
+                        return RedirectToAction(nameof(Statements));
+                    }
+                    else
+                    {
+                        return RedirectToAction(nameof(Index));
+                    }
                 }
             }
 
