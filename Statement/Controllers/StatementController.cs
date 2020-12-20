@@ -10,6 +10,7 @@ using Statement.Services;
 using Statement.Data;
 using Statement.ViewModel;
 using Microsoft.EntityFrameworkCore;
+using Statement.Models;
 
 namespace Statement.Controllers
 {
@@ -360,5 +361,27 @@ namespace Statement.Controllers
         //        HistoryOfStatuses = statementHistoryOfStatuses
         //    });
         //}
+
+
+
+        [HttpGet]
+        public IActionResult StatementBetweenDates()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult StatementBetweenDates([Bind("startDate,endDate")] BetweenDates dates)
+        {
+            DateTime some = dates.startDate;
+            return View(dates);
+        }
+
+        public FileStreamResult ExcelStatementsBetweenDates(BetweenDates dates)
+        {
+            var memoryStream = _statementService.WriteExcelStatementsBetweenDates(dates);
+
+            return File(memoryStream, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "Всі заяви.xlsx");
+        }
     }
 }

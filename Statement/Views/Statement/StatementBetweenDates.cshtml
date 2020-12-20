@@ -1,0 +1,27 @@
+﻿@model Statement.Models.BetweenDates
+@{
+    ViewData["Title"] = "StatementBetweenDates";
+}
+<form method="post" action="/Statement/StatementBetweenDates" onsubmit="return validate(this)" name="date">
+    <label for="start">Початкова дата:</label>
+
+    <input type="date" id="startDate" name="startDate"
+           value="2020-12-01"
+           min="2020-11-31" max="2100-12-31">
+
+    <label for="end">Кінцева дата:</label>
+
+    <input type="date" id="endDate" name="endDate"
+           value="2020-12-31"
+           min="2020-11-31" max="2100-12-31">
+
+    <input type="submit" value="Отправить" formnovalidate />
+</form>
+@if (Model != null && Model.endDate != new DateTime(0001, 01, 01, 0, 00, 00) && Model.startDate != new DateTime(0001, 01, 01, 0, 00, 00))
+{
+    <p>Всі заяви </p>
+    @Html.ActionLink("StatementsBetweenDates", "ExcelStatementsBetweenDates", "Statement", Model);
+}
+@*<div>
+        <a asp-action="Statements">Назад до заяв</a>
+    </div>*@

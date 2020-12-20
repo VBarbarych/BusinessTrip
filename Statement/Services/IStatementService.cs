@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
+using Statement.Models;
 
 namespace Statement.Services
 {
@@ -17,5 +19,7 @@ namespace Statement.Services
         StatementViewModel GetAllStatements();
 
         byte[] WorkWithDocFile(ApplicationStatement statement);
+
+        MemoryStream WriteExcelStatementsBetweenDates(BetweenDates dates);
     }
 }
